@@ -296,12 +296,90 @@ printing, repairs, internet access, and business support with quality service.
 <p>Email: solexgift@gmail.com</p>
 <p>Address: Your Location</p>
 
-<form>
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Your Email">
-<textarea rows="5" placeholder="Your Message"></textarea>
-<button class="btn">Send Message</button>
-</form>
+<hr>
+<section style="background-color: #f0f4f8; padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #d1d9e6;">
+  <h2 style="color: #003366;">🎓 Student Registration Form</h2>
+  <p>Join the SolexGift Computer Training Center.</p>
+  
+  <form action="https://formspree.io/f/xyklllkk" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="New Student Registration: SolexGift">
+    
+    <label><strong>Full Name:</strong></label><br>
+    <input type="text" name="Student Name" required style="width: 90%; padding: 8px;"><br><br>
+
+    <label><strong>Gender:</strong></label><br>
+    <input type="radio" name="Gender" value="Male"> Male 
+    <input type="radio" name="Gender" value="Female"> Female<br><br>
+
+    <label><strong>Date of Birth:</strong></label><br>
+    <input type="date" name="DOB" style="width: 90%; padding: 8px;"><br><br>
+
+    <label><strong>Contact:</strong></label><br>
+    <input type="tel" name="Phone" placeholder="Phone Number" required style="width: 44%; padding: 8px;">
+    <input type="email" name="Email" placeholder="Email Address" style="width: 44%; padding: 8px;"><br><br>
+
+    <label><strong>Home Address:</strong></label><br>
+    <textarea name="Address" style="width: 90%; height: 50px; padding: 8px;"></textarea><br><br>
+
+    <label><strong>Passport Photo:</strong></label><br>
+    <input type="file" name="Passport" accept="image/*"><br><br>
+
+    <label><strong>Course Interested In:</strong></label><br>
+    <select name="Course" style="width: 90%; padding: 8px;">
+      <option value="Computer Training">Computer Training</option>
+      <option value="CBT Training">CBT Training</option>
+      <option value="Graphic Design">Graphic Design</option>
+      <option value="Website Design">Website Design</option>
+      <option value="Typing Training">Typing Training</option>
+    </select><br><br>
+
+    <label><strong>Preferred Time:</strong></label><br>
+    <select name="TimeSlot" style="width: 90%; padding: 8px;">
+      <option value="Morning">Morning</option>
+      <option value="Afternoon">Afternoon</option>
+      <option value="Evening">Evening</option>
+    </select><br><br>
+
+    <button type="submit" style="background-color: #003366; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+      Register Student
+    </button>
+  </form>
+</section>
+
+<section style="background-color: #e8f5e9; padding: 25px; border-radius: 15px; border: 1px solid #c8e6c9;">
+  <h2 style="color: #2e7d32;">🛠️ Client Service Request</h2>
+  <p>Request printing, registration, or other services.</p>
+
+  <form action="https://formspree.io/f/xyklllkk" method="POST">
+    <input type="hidden" name="_subject" value="New Service Request: SolexGift">
+
+    <label><strong>Full Name:</strong></label><br>
+    <input type="text" name="Client Name" required style="width: 90%; padding: 8px;"><br><br>
+
+    <label><strong>Service Needed:</strong></label><br>
+    <select name="Service" style="width: 90%; padding: 8px;">
+      <option value="Printing">Printing</option>
+      <option value="Photocopy">Photocopy</option>
+      <option value="Lamination">Lamination</option>
+      <option value="Passport Photo">Passport Photo</option>
+      <option value="Website Design">Website Design</option>
+      <option value="Online Registration">Online Registration</option>
+      <option value="Result Checking">Result Checking</option>
+    </select><br><br>
+
+    <label><strong>Quantity / Details:</strong></label><br>
+    <textarea name="Details" placeholder="Example: 50 copies, black and white" style="width: 90%; height: 50px; padding: 8px;"></textarea><br><br>
+
+    <label><strong>Urgency:</strong></label><br>
+    <input type="radio" name="Urgency" value="Normal" checked> Normal 
+    <input type="radio" name="Urgency" value="Urgent"> Urgent<br><br>
+
+    <button type="submit" style="background-color: #2e7d32; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+      Submit Service Request
+    </button>
+  </form>
+</section>
+<hr>
 </section>
 
 <footer>
@@ -348,22 +426,6 @@ setTimeout(typeEffect,deleting?60:120);
 
 typeEffect();
 </script>
-  <hr>
-<h3>SolexGift Computer Center - Client Report</h3>
-<p>Submit your details below to reach us.</p>
-
-<form action="https://formspree.io/f/xyklllkk" method="POST">
-  <label><strong>Your Name:</strong></label><br>
-  <input type="text" name="name" required style="width: 100%; max-width: 300px;"><br><br>
-
-  <label><strong>Your Report:</strong></label><br>
-  <textarea name="message" required style="width: 100%; max-width: 300px; height: 100px;"></textarea><br><br>
-
-  <button type="submit" style="padding: 10px; background-color: blue; color: white; border: none; border-radius: 5px;">
-    Send Report
-  </button>
-</form>
-<hr>
 
 </body>
 </html>
