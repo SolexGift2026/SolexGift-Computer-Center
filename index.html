@@ -41,7 +41,17 @@ nav {
     justify-content: space-between; /* Default for computers */
     align-items: center;
 }
+.logo img {
+    height: 50px;      /* Perfect height for computers */
+    width: auto;       
+    display: block;
+}
 
+@media (max-width: 768px) {
+    .logo img {
+        height: 40px;  /* Auto-shrinks for the phone */
+    }
+}
 /* PHONE FIX: This only triggers on screens smaller than 768px */
 @media (max-width: 768px) {
     nav {
@@ -235,7 +245,9 @@ font-size:22px;
 
 <header>
 <nav>
-<div class="logo">Solex Gift Computer Center</div>
+<div class="logo">
+    <img src="image/logo.png" alt="Solex Gift Logo" style="height: 50px; width: auto;">
+</div>
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
