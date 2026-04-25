@@ -31,7 +31,69 @@ header {
     z-index: 1000;
     border-bottom: 2px solid #00f0ff;
 }
+/* --- GLOBAL LAYOUT FIX --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
+section {
+    padding: 80px 0;
+    display: block;
+    width: 100%;
+}
+
+/* --- CEO VOICE PULSE SYSTEM --- */
+.ceo-voice-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.ceo-pulse-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+    border: 4px solid #007bff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pulse-ring {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(0, 123, 255, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.talking .pulse-ring {
+    display: block;
+    animation: ripple 1.5s infinite ease-out;
+}
+
+@keyframes ripple {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(2.2); opacity: 0; }
+}
+
+.voice-btn {
+    margin-top: 25px;
+    padding: 12px 30px;
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
     .container {
     max-width: 1000px; /* Limits the width so text isn't too long */
     margin: 0 auto;    /* This is the magic line that centers everything */
