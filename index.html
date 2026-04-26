@@ -861,6 +861,7 @@ function analyseResults() {
     const rows = document.getElementById('tableBody').rows;
     let scoresList = [];
 
+    // 1. Calculate Totals and Grades for every row
     for (let i = 0; i < rows.length; i++) {
         let ca1 = parseFloat(rows[i].querySelector('.ca1').value) || 0;
         let ca2 = parseFloat(rows[i].querySelector('.ca2').value) || 0;
@@ -868,29 +869,42 @@ function analyseResults() {
         let exam = parseFloat(rows[i].querySelector('.exam').value) || 0;
 
         let grandTotal = ca1 + ca2 + ca3 + exam;
-        let grade = getGradeFromTotal(grandTotal);
-
-        rows[i].querySelector('.total').innerText = grandTotal;
-        rows[i].querySelector('.grade').innerText = grade;
         
-        scoresList.push({ index: i, totalScore: grandTotal });
+        // Update the table cells for Total and Grade
+        rows[i].querySelector('.total').innerText = grandTotal;
+        rows[i].querySelector('.grade').innerText = getGradeFromTotal(grandTotal);
+
+        // Store data for the ranking step
+        scoresList.push({ index: i, totalscore: grandTotal });
     }
 
-    // Rank Position based on Total
-    scoresList.sort((a, b) => b.totalScore - a.totalScore);
-    scoresList.forEach((student, rank) => {
-        rows[student.index].querySelector('.position').innerText = rank + 1;
+    // 2. DENSE RANKING (1, 1, 2 style)
+    // Create a unique list of scores, sorted highest to lowest
+    let uniqueScores = [...new Set(scoresList.map(s => s.totalscore))].sort((a, b) => b - a);
+
+    // 3. Assign Positions based on the unique score list
+    scoresList.forEach((student) => {
+        // find the position of the score in the sorted unique list
+        let rank = uniqueScores.indexOf(student.totalscore) + 1;
+        rows[student.index].querySelector('.position').innerText = rank;
     });
+
+    // 4. Save data automatically (if function exists)
+    if (typeof autoSaveData === "function") {
+        autoSaveData();
+    }
 }
 
-// Grading based on the 100-point Total
+// Ensure you have this helper function below it
 function getGradeFromTotal(total) {
     if (total >= 70) return "A";
     if (total >= 60) return "B";
     if (total >= 50) return "C";
     if (total >= 45) return "D";
+    if (total >= 40) return "E";
     return "F";
 }
+    
     function searchBySubject() {
     // Get what the user typed in the search box
     let filter = document.getElementById('subjectSearch').value.toLowerCase();
