@@ -18,7 +18,68 @@ body{
 background:#0a0a0a;
 color:white;
 }
+/* --- SOLEX GIFT TECH ACADEMY: RESULT COMPILER STYLES --- */
 
+#single-subject-compiler {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Table Styling */
+#resultTable {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#resultTable th {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+#resultTable td {
+    padding: 10px;
+}
+
+/* Input Box Styling */
+#resultTable input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+#resultTable input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.name-input {
+    background-color: #fdfdfd;
+}
+
+/* Result Columns Highlight */
+.total, .grade, .position {
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Logo Transparency Fix */
+.logo img {
+    mix-blend-mode: multiply;
+    background-color: transparent !important;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    #resultTable input {
+        padding: 5px;
+        font-size: 12px;
+    }
+}
+    
 header {
     position: fixed;
     top: 0;
@@ -390,6 +451,51 @@ font-size:22px;
 </div>
 </section>
 
+<section id="single-subject-compiler" style="padding: 20px; background: #f8f9fa; border-radius: 15px; border: 2px solid #007bff;">
+    <h2 style="color: #007bff; text-align: center; margin-bottom: 5px;">SOLEX GIFT TECH ACADEMY</h2>
+    <p style="text-align: center; font-weight: bold; margin-bottom: 20px;">Subject Result Sheet</p>
+    
+    <div style="margin-bottom: 20px; text-align: center;">
+        <input type="text" id="subjectHeader" placeholder="Enter Subject Name (e.g. ICT)" style="padding: 10px; width: 250px; border: 1px solid #007bff; border-radius: 5px; font-weight: bold; text-align: center;">
+        <button onclick="addRow()" style="background: #17a2b8; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">+ Add Student</button>
+    </div>
+
+    <div style="overflow-x:auto;">
+        <table id="resultTable" style="width:100%; border-collapse: collapse; background: white; border: 1px solid #ddd;">
+            <thead>
+                <tr style="background: #343a40; color: white;">
+                    <th style="padding: 12px; border: 1px solid #ddd; width: 50px;">S/N</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Student Name</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; background: #555;">CA 1</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; background: #555;">CA 2</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; background: #555;">CA 3</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; background: #444;">Exam</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; background: #007bff;">Total</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; background: #007bff;">Grade</th>
+                    <th style="padding: 12px; border: 1px solid #ddd; background: #007bff;">Position</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td class="serial-number" style="text-align: center; font-weight: bold;">1</td>
+                    <td><input type="text" class="name-input" placeholder="Full Name" style="width: 100%; border: none; padding: 5px;"></td>
+                    <td><input type="number" class="score ca1" oninput="this.value = Math.min(this.value, 10)" placeholder="10" style="width: 50px; text-align: center;"></td>
+                    <td><input type="number" class="score ca2" oninput="this.value = Math.min(this.value, 10)" placeholder="10" style="width: 50px; text-align: center;"></td>
+                    <td><input type="number" class="score ca3" oninput="this.value = Math.min(this.value, 10)" placeholder="10" style="width: 50px; text-align: center;"></td>
+                    <td><input type="number" class="score exam" oninput="this.value = Math.min(this.value, 70)" placeholder="70" style="width: 60px; text-align: center; background: #f0f7ff; font-weight: bold;"></td>
+                    <td class="total" style="font-weight:bold; text-align: center;">-</td>
+                    <td class="grade" style="font-weight:bold; text-align: center;">-</td>
+                    <td class="position" style="font-weight:bold; text-align: center;">-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <button onclick="analyseResults()" style="background: #28a745; color: white; padding: 15px 50px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 18px; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);">ANALYSE RESULTS</button>
+    </div>
+</section>
+
   <section style="text-align: center; padding: 40px 20px; background-color: #f9f9f9;">
   <h2 style="color: #003366; font-family: sans-serif;">Watch Our Latest Work</h2>
   
@@ -726,7 +832,72 @@ i=(i+1)%words.length;
 setTimeout(typeEffect,deleting?60:120);
 }
 
-typeEffect();
+function updateSerialNumbers() {
+    const rows = document.querySelectorAll('#tableBody tr');
+    rows.forEach((row, index) => {
+        row.querySelector('.serial-number').innerText = index + 1;
+    });
+}
+
+function addRow() {
+    const tbody = document.getElementById('tableBody');
+    const firstRow = tbody.rows[0];
+    const newRow = firstRow.cloneNode(true);
+    
+    // Reset values for new entry
+    newRow.querySelectorAll('input').forEach(input => input.value = "");
+    newRow.querySelectorAll('.total, .grade, .position').forEach(td => td.innerText = "-");
+    
+    tbody.appendChild(newRow);
+    updateSerialNumbers();
+}
+
+function analyseResults() {
+    const rows = document.getElementById('tableBody').rows;
+    let scoresList = [];
+
+    for (let i = 0; i < rows.length; i++) {
+        let ca1 = parseFloat(rows[i].querySelector('.ca1').value) || 0;
+        let ca2 = parseFloat(rows[i].querySelector('.ca2').value) || 0;
+        let ca3 = parseFloat(rows[i].querySelector('.ca3').value) || 0;
+        let exam = parseFloat(rows[i].querySelector('.exam').value) || 0;
+
+        let grandTotal = ca1 + ca2 + ca3 + exam;
+        let grade = getGradeFromTotal(grandTotal);
+
+        rows[i].querySelector('.total').innerText = grandTotal;
+        rows[i].querySelector('.grade').innerText = grade;
+        
+        scoresList.push({ index: i, totalScore: grandTotal });
+    }
+
+    // Rank Position based on Total
+    scoresList.sort((a, b) => b.totalScore - a.totalScore);
+    scoresList.forEach((student, rank) => {
+        rows[student.index].querySelector('.position').innerText = rank + 1;
+    });
+}
+
+// Grading based on the 100-point Total
+function getGradeFromTotal(total) {
+    if (total >= 70) return "A";
+    if (total >= 60) return "B";
+    if (total >= 50) return "C";
+    if (total >= 45) return "D";
+    return "F";
+}
+    
+   // Add this at the bottom of your analyseResults function
+localStorage.setItem('savedResults', document.getElementById('tableBody').innerHTML);
+
+// Add this to run when the page opens
+window.onload = function() {
+    if (localStorage.getItem('savedResults')) {
+        document.getElementById('tableBody').innerHTML = localStorage.getItem('savedResults');
+        updateSerialNumbers();
+    }
+};
+    typeEffect();
 </script>
 
 </body>
