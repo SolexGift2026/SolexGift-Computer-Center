@@ -465,7 +465,7 @@ font-size:22px;
            onkeyup="searchBySubject();" 
            onkeydown="if(event.keyCode==13){event.preventDefault(); return false;}"
            placeholder="🔍 Search Subject Name..." 
-           style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black;">
+           style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black; outline: none;">
 </div>
    
     <div style="overflow-x:auto;">
@@ -861,29 +861,53 @@ function addRow() {
 }
 
 function analyseResults() {
-    const rows = document.getElementById('tableBody').rows;
-    let scoresList = [];
+    const rows = Array.from(document.getElementById('tableBody').rows);
+    let scores = [];
 
-    for (let i = 0; i < rows.length; i++) {
-        let ca1 = parseFloat(rows[i].querySelector('.ca1').value) || 0;
-        let ca2 = parseFloat(rows[i].querySelector('.ca2').value) || 0;
-        let ca3 = parseFloat(rows[i].querySelector('.ca3').value) || 0;
-        let exam = parseFloat(rows[i].querySelector('.exam').value) || 0;
+    // 1. Calculate totals and grades for each row first
+    rows.forEach(row => {
+        let ca1 = parseFloat(row.querySelector('.ca1').value) || 0;
+        let ca2 = parseFloat(row.querySelector('.ca2').value) || 0;
+        let ca3 = parseFloat(row.querySelector('.ca3').value) || 0;
+        let exam = parseFloat(row.querySelector('.exam').value) || 0;
 
-        let grandTotal = ca1 + ca2 + ca3 + exam;
-        let grade = getGradeFromTotal(grandTotal);
-
-        rows[i].querySelector('.total').innerText = grandTotal;
-        rows[i].querySelector('.grade').innerText = grade;
+        let total = ca1 + ca2 + ca3 + exam;
+        row.querySelector('.total').innerText = total;
+        row.querySelector('.grade').innerText = getGradeFromTotal(total);
         
-        scoresList.push({ index: i, totalScore: grandTotal });
-    }
-
-    // Rank Position based on Total
-    scoresList.sort((a, b) => b.totalScore - a.totalScore);
-    scoresList.forEach((student, rank) => {
-        rows[student.index].querySelector('.position').innerText = rank + 1;
+        scores.push(total);
     });
+
+    // 2. DENSE RANKING LOGIC
+    // Sort unique scores in descending order
+    let uniqueSortedScores = [...new Set(scores)].sort((a, b) => b - a);
+
+    // 3. Assign positions based on the index in the unique list
+    rows.forEach(row => {
+        let total = parseFloat(row.querySelector('.total').innerText);
+        // Position is the index in uniqueSortedScores + 1
+        let position = uniqueSortedScores.indexOf(total) + 1;
+        row.querySelector('.position').innerText = position;
+    });
+
+    // Save data automatically after analysis
+    if (typeof autoSaveData === "function") autoSaveData();
+}
+
+    // --- START OF NEW DENSE RANKING ---
+    // 1. Get all unique scores and sort them highest to lowest
+    let uniqueScores = [...new Set(scoresList.map(s => s.totalscore))].sort((a, b) => b - a);
+
+    // 2. Assign positions based on unique score list (No skipping!)
+    scoresList.forEach((student) => {
+        let rank = uniqueScores.indexOf(student.totalscore) + 1;
+        rows[student.index].querySelector('.position').innerText = rank;
+    });
+    // --- END OF NEW DENSE RANKING ---
+
+    // Save automatically so it stays if system goes off
+    if (typeof autoSaveData === "function") autoSaveData();
+} // This is the closing bracket for analyseResults
 }
 
 // Grading based on the 100-point Total
