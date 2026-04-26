@@ -392,83 +392,61 @@ font-size:22px;
     body { background: white !important; }
     #single-subject-compiler { border: none !important; width: 100% !important; }
 }
-/* Container for the Registration Form */
-#registration-section {
-    background: linear-gradient(135deg, #ffffff 60%, #fff8e1 100%); /* Subtle white to light gold */
-    padding: 40px;
+* --- GOLD & WHITE FORM SYSTEM --- */
+#registration-section, #client-section {
+    background: linear-gradient(135deg, #ffffff 50%, #fff9db 100%); /* Gold/White Mix */
+    color: #333;
+    padding: 40px 25px;
     border-radius: 20px;
-    border: 1px solid #d4af37; /* Metallic Gold border */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-    max-width: 800px;
+    border: 3px solid #d4af37; /* Metallic Gold */
+    max-width: 850px;
     margin: 40px auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-#registration-section h2 {
-    color: #003366; /* Deep Professional Blue */
+.matured-form h2 {
+    color: #003366; /* Deep Blue */
     text-align: center;
-    margin-bottom: 30px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Grouping inputs for a cleaner look */
-.form-group {
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
-.form-group label {
+.matured-form label {
+    font-weight: bold;
+    color: #003366;
     display: block;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 8px;
-    font-size: 14px;
+    margin-top: 15px;
 }
 
-/* Professional Input Styling */
-.reg-input {
+.matured-form input, 
+.matured-form select, 
+.matured-form textarea {
     width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid #e0e0e0;
-    border-radius: 10px;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1.5px solid #d4af37;
+    border-radius: 8px;
+    background: #fdfdfd;
     font-size: 16px;
-    background-color: #ffffff;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
 }
 
-.reg-input:focus {
-    border-color: #d4af37; /* Gold focus */
-    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
-    outline: none;
-}
-
-/* File Upload Styling */
-input[type="file"] {
-    background: #f9f9f9;
-    padding: 10px;
-    cursor: pointer;
-}
-
-/* The Submit Button */
-.btn-register {
+.btn-submit-gold {
     background-color: #003366;
     color: white;
-    width: 100%;
     padding: 16px;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
+    cursor: pointer;
     font-size: 18px;
     font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    margin-top: 20px;
+    width: 100%;
+    margin-top: 25px;
+    transition: 0.3s;
 }
 
-.btn-register:hover {
-    background-color: #d4af37; /* Gold on hover */
-    transform: translateY(-2px);
+.btn-submit-gold:hover {
+    background-color: #d4af37;
 }
 </style>
 </head>
@@ -702,55 +680,61 @@ input[type="file"] {
 </section>
 
 <hr>
-<section style="background-color: white; color: black; padding: 20px; border: 2px solid #003366; border-radius: 10px; margin-bottom: 30px;">
-  <h2 style="color: #003366; margin-top: 0;">🎓 Student Registration Form</h2>
-  <p style="color: #333;">Join the SolexGift Computer Training Center.</p>
-  
-  <form action="https://formspree.io/f/xyklllkk" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_subject" value="New Student Registration: SolexGift">
-    
-    <label><strong>Full Name:</strong></label><br>
-    <input type="text" name="Student Name" required style="width: 100%; max-width: 400px; padding: 10px; border: 1px solid #ccc;"><br><br>
 
-    <label><strong>Gender:</strong></label><br>
-    <input type="radio" name="Gender" value="Male"> <span style="color: black;">Male</span> 
-    <input type="radio" name="Gender" value="Female"> <span style="color: black;">Female</span><br><br>
+    <section id="registration-section" class="matured-form">
+    <h2>🎓 Student Registration</h2>
+    <form action="https://formspree.io/f/xyklllkk" method="POST" enctype="multipart/form-data">
+        <label>Full Name</label>
+        <input type="text" name="Student Name" required placeholder="Surname First...">
 
-    <label><strong>Date of Birth:</strong></label><br>
-    <input type="date" name="DOB" style="width: 100%; max-width: 400px; padding: 10px; border: 1px solid #ccc;"><br><br>
+        <div style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+                <label>Date of Birth</label>
+                <input type="date" name="DOB" required>
+            </div>
+            <div style="flex: 1;">
+                <label>Nationality</label>
+                <input type="text" name="Nationality" placeholder="e.g. Nigerian">
+            </div>
+        </div>
 
-    <label><strong>Phone Number:</strong></label><br>
-    <input type="tel" name="Phone" required style="width: 100%; max-width: 400px; padding: 10px; border: 1px solid #ccc;"><br><br>
+        <label>Course of Interest</label>
+        <select name="Course">
+            <option>Computer Training</option>
+            <option>Graphic Design</option>
+            <option>Web Development</option>
+            <option>Data Analysis</option>
+        </select>
 
-    <label><strong>Email Address:</strong></label><br>
-    <input type="email" name="Email" style="width: 100%; max-width: 400px; padding: 10px; border: 1px solid #ccc;"><br><br>
+        <label>Upload Passport/ID</label>
+        <input type="file" name="Document">
 
-    <label><strong>Home Address:</strong></label><br>
-    <textarea name="Address" style="width: 100%; max-width: 400px; height: 60px; padding: 10px; border: 1px solid #ccc;"></textarea><br><br>
+        <button type="submit" class="btn-submit-gold">Register Student</button>
+    </form>
+</section>
 
-    <label><strong>Passport Photo:</strong></label><br>
-    <input type="file" name="Passport" accept="image/*"><br><br>
+<section id="client-section" class="matured-form">
+    <h2>🛠️ Service Request</h2>
+    <form action="https://formspree.io/f/xyklllkk" method="POST">
+        <label>Client Name</label>
+        <input type="text" name="Client Name" required>
 
-    <label><strong>Course Interested In:</strong></label><br>
-    <select name="Course" style="width: 100%; max-width: 425px; padding: 10px; border: 1px solid #ccc;">
-      <option value="Computer Training">Computer Training</option>
-      <option value="CBT Training">CBT Training</option>
-      <option value="Graphic Design">Graphic Design</option>
-      <option value="Website Design">Website Design</option>
-      <option value="Typing Training">Typing Training</option>
-    </select><br><br>
+        <label>Service Needed</label>
+        <select name="Service">
+            <option>Printing & Photocopy</option>
+            <option>Graphic Design</option>
+            <option>Online Registration</option>
+            <option>Computer Repairs</option>
+        </select>
 
-    <label><strong>Preferred Time:</strong></label><br>
-    <select name="TimeSlot" style="width: 100%; max-width: 425px; padding: 10px; border: 1px solid #ccc;">
-      <option value="Morning">Morning</option>
-      <option value="Afternoon">Afternoon</option>
-      <option value="Evening">Evening</option>
-    </select><br><br>
+        <label>Urgency</label>
+        <div style="margin-top: 10px;">
+            <input type="radio" name="Urgency" value="Normal" checked> Normal 
+            <input type="radio" name="Urgency" value="Urgent"> Urgent
+        </div>
 
-    <button type="submit" style="background-color: #003366; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">
-      Register Student
-    </button>
-  </form>
+        <button type="submit" class="btn-submit-gold" style="background-color: #2e7d32;">Submit Request</button>
+    </form>
 </section>
 
 <section style="background-color: white; color: black; padding: 20px; border: 2px solid #2e7d32; border-radius: 10px;">
