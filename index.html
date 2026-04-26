@@ -599,75 +599,22 @@ font-size:22px;
   <section style="text-align: center; padding: 40px 20px; background-color: #f9f9f9;">
   <h2 style="color: #003366; font-family: sans-serif;">Watch Our Latest Work</h2>
   
-  <section style="padding: 50px 20px; background: linear-gradient(135deg, #cfb53b 0%, #e6e6e6 50%, #d4af37 100%); font-family: 'Segoe UI', Arial, sans-serif;">
-  
-  <div style="max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 25px; border: 5px solid #b8860b; box-shadow: 0 20px 40px rgba(0,0,0,0.4); overflow: hidden; position: relative;">
+ <section id="instructor-slideshow" class="matured-form" style="text-align: center; min-height: 500px;">
+    <h2 style="margin-bottom: 30px;">Our Expert Instructors</h2>
     
-    <h2 style="color: #003366; text-align: center; text-transform: uppercase; letter-spacing: 1px; font-size: 22px;">💻 Computer Electronics Lecture 💻</h2>
+    <button id="start-tour-btn" class="btn-big-rounded" style="width: auto; padding: 15px 40px; margin-bottom: 20px;">
+        START INSTRUCTOR TOUR
+    </button>
 
-    <div id="slider" style="width: 100%; height: 450px; position: relative; margin-top: 20px; background: #000; border-radius: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-      
-      <div class="mySlides animate" style="text-align: center; color: white; padding: 40px;">
-        <h1 style="color: #cfb53b; font-size: 40px;">Internal Components</h1>
-        <p style="font-size: 20px;">Exploring the "Brain" of the Computer</p>
-        <div style="font-size: 80px;">🧠💻</div>
-      </div>
-
-      <div class="mySlides animate" style="display:none; text-align: center; color: white; padding: 40px;">
-        <h2 style="color: #cfb53b;">The CPU (Processor)</h2>
-        <p>The Central Processing Unit executes all instructions.</p>
-        <img src="https://img.icons8.com/fluency/240/cpu.png" style="width: 150px; margin-top: 20px;">
-      </div>
-
-      <div class="mySlides animate" style="display:none; text-align: center; color: white; padding: 40px;">
-        <h2 style="color: #c0c0c0;">Random Access Memory (RAM)</h2>
-        <p>Short-term memory used for multitasking and speed.</p>
-        <img src="https://img.icons8.com/fluency/240/memory-slot.png" style="width: 150px; margin-top: 20px;">
-      </div>
-
-      <div class="mySlides animate" style="display:none; text-align: center; color: white; padding: 40px;">
-        <h2 style="color: #cfb53b;">Storage: SSD vs HDD</h2>
-        <p>Where your data, files, and OS are saved permanently.</p>
-        <img src="https://img.icons8.com/fluency/240/ssd.png" style="width: 150px; margin-top: 20px;">
-      </div>
-
-      <button onclick="plusSlides(-1)" style="position: absolute; left: 10px; background: rgba(207, 181, 59, 0.7); border: none; color: white; font-size: 30px; cursor: pointer; border-radius: 50%; width: 50px; height: 50px;">❮</button>
-      <button onclick="plusSlides(1)" style="position: absolute; right: 10px; background: rgba(207, 181, 59, 0.7); border: none; color: white; font-size: 30px; cursor: pointer; border-radius: 50%; width: 50px; height: 50px;">❯</button>
+    <div id="slide-container" style="display: none;">
+        <div style="position: relative; display: inline-block;">
+            <img id="instructor-img" src="instructor1.jpg" 
+                 style="width: 300px; height: 300px; border-radius: 50%; border: 6px solid #1b4332; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+        <h2 id="instructor-name-label" style="margin-top: 25px; letter-spacing: 2px;">LOADING...</h2>
     </div>
-
-    <p style="text-align: center; margin-top: 15px; font-weight: bold; color: #003366;">Click the arrows to change slides | SolexGift Academy</p>
-  </div>
-
-  <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-
-    function showSlides(n) {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slides[slideIndex-1].style.display = "block";  
-    }
-  </script>
-
-  <style>
-    .animate {
-      animation: fadeEffect 1.5s;
-    }
-    @keyframes fadeEffect {
-      from {opacity: 0.4;} 
-      to {opacity: 1;}
-    }
-  </style>
 </section>
+      
   <p style="margin-top: 15px; font-family: sans-serif; color: #555;">
     From professional printing to custom web design & Video editing. 
   </p>
@@ -1014,6 +961,55 @@ function startTalking() {
         container.classList.remove('talking');
     }
 }
+    <script>
+// 1. DATA: THE LIST
+// If your images are .png, change '.jpg' to '.png' below for every person
+const instructors = [
+    { name: "Professor Success", photo: "image/instructor1.jpg" },
+    { name: "Engineer Gift Solomon", photo: "image/instructor2.jpg" },
+    { name: "Dr. Sarah Adams", photo: "image/instructor3.jpg" },
+    { name: "Mr. Michael Brown", photo: "image/instructor4.jpg" },
+    { name: "Chef Elena Rodriguez", photo: "image/instructor5.jpg" },
+    { name: "Captain David Okafor", photo: "image/instructor6.jpg" },
+    { name: "Nurse Maryam Bello", photo: "image/instructor7.jpg" },
+    { name: "Architect Paul Vance", photo: "image/instructor8.jpg" },
+    { name: "Barrister Jane Doe", photo: "image/instructor9.jpg" },
+    { name: "Specialist Peter Kwame", photo: "image/instructor10.jpg" }
+];
+
+let currentIndex = 0;
+const startBtn = document.getElementById('start-tour-btn');
+const slideContainer = document.getElementById('slide-container');
+const imgElement = document.getElementById('instructor-img');
+const nameElement = document.getElementById('instructor-name-label');
+
+function announceInstructor(name) {
+    window.speechSynthesis.cancel(); // Clears any stuck speech
+    const speech = new SpeechSynthesisUtterance(`Our instructor, ${name}`);
+    speech.rate = 0.85; 
+    window.speechSynthesis.speak(speech);
+}
+
+function nextInstructor() {
+    const person = instructors[currentIndex];
+    
+    // Check if the image exists and update
+    imgElement.src = person.photo;
+    nameElement.innerText = person.name;
+    
+    announceInstructor(person.name);
+    currentIndex = (currentIndex + 1) % instructors.length;
+}
+
+startBtn.addEventListener('click', () => {
+    // Hide the start zone and show the slide
+    document.getElementById('unlock-zone').style.display = 'none';
+    slideContainer.style.display = 'block';
+    
+    nextInstructor();
+    setInterval(nextInstructor, 6000); // Change every 6 seconds
+});
+</script>
 </script>
 
 </body>
