@@ -892,7 +892,6 @@ function analyseResults() {
 
     // Save data automatically after analysis
     if (typeof autoSaveData === "function") autoSaveData();
-}
 
     // --- START OF NEW DENSE RANKING ---
     // 1. Get all unique scores and sort them highest to lowest
@@ -908,7 +907,7 @@ function analyseResults() {
     // Save automatically so it stays if system goes off
     if (typeof autoSaveData === "function") autoSaveData();
 } // This is the closing bracket for analyseResults
-}
+
 
 // Grading based on the 100-point Total
 function getGradeFromTotal(total) {
