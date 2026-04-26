@@ -878,23 +878,8 @@ function analyseResults() {
         scores.push(total);
     });
 
-    // 2. DENSE RANKING LOGIC
-    // Sort unique scores in descending order
-    let uniqueSortedScores = [...new Set(scores)].sort((a, b) => b - a);
-
-    // 3. Assign positions based on the index in the unique list
-    rows.forEach(row => {
-        let total = parseFloat(row.querySelector('.total').innerText);
-        // Position is the index in uniqueSortedScores + 1
-        let position = uniqueSortedScores.indexOf(total) + 1;
-        row.querySelector('.position').innerText = position;
-    });
-
-    // Save data automatically after analysis
-    if (typeof autoSaveData === "function") autoSaveData();
-
-    // --- START OF NEW DENSE RANKING ---
-    // 1. Get all unique scores and sort them highest to lowest
+// --- START OF NEW DENSE RANKING ---
+    // 1. Get unique scores and sort them highest to lowest
     let uniqueScores = [...new Set(scoresList.map(s => s.totalscore))].sort((a, b) => b - a);
 
     // 2. Assign positions based on unique score list (No skipping!)
@@ -904,11 +889,13 @@ function analyseResults() {
     });
     // --- END OF NEW DENSE RANKING ---
 
-    // Save automatically so it stays if system goes off
-    if (typeof autoSaveData === "function") autoSaveData();
-} // This is the closing bracket for analyseResults
+    // 3. Save automatically so it stays if system goes off
+    if (typeof autoSaveData === "function") {
+        autoSaveData();
+    }
 
-
+} // This is the ONLY bracket that should close the analyseResults function
+    
 // Grading based on the 100-point Total
 function getGradeFromTotal(total) {
     if (total >= 70) return "A";
