@@ -396,79 +396,85 @@ font-size:22px;
     box-sizing: border-box;
 }
 
-/* --- BULLETPROOF MATURED DESIGN (PC & MOBILE) --- */
+/* --- BULLETPROOF MATURED DESIGN (RESPONSIVE CLEAN VERSION) --- */
 
-/* Reset for all browsers */
 .matured-form * {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
 .matured-form {
-    /* Background Gold to Green/White mix */
-    background: linear-gradient(135deg, #ffffff 40%, #d4af37 80%, #1b4332 100%) !important;
-    padding: 40px 20px !important;
-    border-radius: 30px !important;
-    border: 6px solid #d4af37 !important;
-    margin: 40px auto !important;
-    width: 95% !important;
-    max-width: 850px !important; /* Limits width on laptop so it stays centered */
-    text-align: left !important;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+    background: linear-gradient(135deg, #ffffff 40%, #d4af37 80%, #1b4332 100%);
+    padding: clamp(25px, 4vw, 40px) clamp(15px, 3vw, 20px);
+    border-radius: 30px;
+    border: 6px solid #d4af37;
+    margin: 40px auto;
+    width: 95%;
+    max-width: 850px;
+    text-align: left;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* TEXT: HEAVY BLUE */
+/* TITLE */
 .matured-form h2 {
-    color: #00008B !important;
-    font-weight: 950 !important;
-    font-size: 32px !important;
+    color: #00008B;
+    font-weight: 950;
+    font-size: clamp(22px, 3vw, 32px);
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 30px;
 }
 
+/* LABELS */
 .matured-form label {
-    color: #00008B !important;
-    font-weight: 900 !important;
-    font-size: 20px !important;
+    color: #00008B;
+    font-weight: 900;
+    font-size: clamp(16px, 2vw, 20px);
     display: block;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
 
-/* INPUTS & LARGE GREEN OPTION BOX */
-.matured-form input, 
+/* INPUTS & SELECT */
+.matured-form input,
 .matured-form select {
-    width: 100% !important;
-    height: 70px !important; /* FORCED HEIGHT FOR LAPTOP visibility */
-    padding: 0 20px !important;
-    font-size: 22px !important;
-    font-weight: 800 !important;
-    border-radius: 15px !important;
-    border: 4px solid #1b4332 !important; /* Thick Green Outline */
-    background: #ffffff !important;
-    color: #00008B !important;
-    margin-bottom: 25px !important;
+    width: 100%;
+    min-height: 55px;
+    padding: 12px 18px;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 800;
+    border-radius: 15px;
+    border: 4px solid #1b4332;
+    background: #ffffff;
+    color: #00008B;
+    margin-bottom: 25px;
 }
 
-/* THE BUTTON: LARGE ROUNDED PILL */
+/* FOCUS EFFECT */
+.matured-form input:focus,
+.matured-form select:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212,175,55,0.7);
+}
+
+/* BUTTON */
 .btn-big-rounded {
-    width: 100% !important;
-    height: 85px !important;
-    background-color: #00008B !important;
-    color: #ffffff !important;
-    font-size: 26px !important;
-    font-weight: 950 !important;
-    border-radius: 50px !important; /* Fully Rounded */
-    border: 4px solid #d4af37 !important;
+    width: 100%;
+    min-height: 70px;
+    background-color: #00008B;
+    color: #ffffff;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 950;
+    border-radius: 50px;
+    border: 4px solid #d4af37;
     cursor: pointer;
     text-transform: uppercase;
-    margin-top: 10px;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .btn-big-rounded:hover {
-    background-color: #1b4332 !important;
+    background-color: #1b4332;
     transform: scale(1.02);
 }
 </style>
