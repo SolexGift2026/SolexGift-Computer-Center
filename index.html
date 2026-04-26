@@ -871,34 +871,34 @@ function analyseResults() {
         let ca3 = parseFloat(row.querySelector('.ca3').value) || 0;
         let exam = parseFloat(row.querySelector('.exam').value) || 0;
 
-        let total = ca1 + ca2 + ca3 + exam;
-        row.querySelector('.total').innerText = total;
-        row.querySelector('.grade').innerText = getGradeFromTotal(total);
-        
-        scores.push(total);
-    });
-
-// --- START OF NEW DENSE RANKING ---
-    // 1. Get unique scores and sort them highest to lowest
-    let uniqueScores = [...new Set(scoresList.map(s => s.totalscore))].sort((a, b) => b - a);
-
-    // 2. Assign positions based on unique score list (No skipping!)
-    scoresList.forEach((student) => {
-        let rank = uniqueScores.indexOf(student.totalscore) + 1;
-        rows[student.index].querySelector('.position').innerText = rank;
-    });
-    // --- END OF NEW DENSE RANKING ---
-
-    // 3. Save automatically so it stays if system goes off
-    if (typeof autoSaveData === "function") {
-        autoSaveData();
-    }
+       
 
 } // This is the ONLY bracket that should close the analyseResults function
     
 // Grading based on the 100-point Total
 function getGradeFromTotal(total) {
-    if (total >= 70) return "A";
+    if (total >= 70) return "A";let total = ca1 + ca2 + ca3 + exam;
+        rows[i].querySelector('.total').innerText = total;
+        rows[i].querySelector('.grade').innerText = getGradeFromTotal(total);
+
+        // This line links the score to the student for the ranking
+        scoresList.push({ index: i, totalscore: total });
+    }
+
+    // --- START OF NEW DENSE RANKING ---
+    // 1. Get unique scores and sort them high to low
+    let uniqueScores = [...new Set(scoresList.map(s => s.totalscore))].sort((a, b) => b - a);
+
+    // 2. Assign positions (No skipping!)
+    scoresList.forEach((student) => {
+        let rank = uniqueScores.indexOf(student.totalscore) + 1;
+        rows[student.index].querySelector('.position').innerText = rank;
+    });
+
+    // 3. Save automatically
+    if (typeof autoSaveData === "function") autoSaveData();
+} 
+Why this fixes Solex Gift Acade
     if (total >= 60) return "B";
     if (total >= 50) return "C";
     if (total >= 45) return "D";
