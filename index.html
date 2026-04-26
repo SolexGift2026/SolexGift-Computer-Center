@@ -461,11 +461,8 @@ font-size:22px;
     </div>
 
     <div style="margin-bottom: 20px; text-align: center;" class="no-print">
-    <input type="text" id="subjectSearch" 
-           onkeyup="searchBySubject();" 
-           onkeydown="if(event.keyCode==13){event.preventDefault(); return false;}"
-           placeholder="🔍 Search Subject Name..." 
-           style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black; outline: none;">
+    <input type="text" id="subjectSearch" onkeyup="searchBySubject()" placeholder="🔍 Search Subject Name..." 
+    style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black;">
 </div>
    
     <div style="overflow-x:auto;">
@@ -864,36 +861,31 @@ function analyseResults() {
     const rows = document.getElementById('tableBody').rows;
     let scoresList = [];
 
-    // 1. Calculate Totals and Grades
     for (let i = 0; i < rows.length; i++) {
         let ca1 = parseFloat(rows[i].querySelector('.ca1').value) || 0;
         let ca2 = parseFloat(rows[i].querySelector('.ca2').value) || 0;
         let ca3 = parseFloat(rows[i].querySelector('.ca3').value) || 0;
         let exam = parseFloat(rows[i].querySelector('.exam').value) || 0;
 
-        let total = ca1 + ca2 + ca3 + exam;
-        rows[i].querySelector('.total').innerText = total;
-        rows[i].querySelector('.grade').innerText = getGradeFromTotal(total);
+        let grandTotal = ca1 + ca2 + ca3 + exam;
+        let grade = getGradeFromTotal(grandTotal);
 
-        // Save the total for ranking
-        scoresList.push({ index: i, totalscore: total });
+        rows[i].querySelector('.total').innerText = grandTotal;
+        rows[i].querySelector('.grade').innerText = grade;
+        
+        scoresList.push({ index: i, totalScore: grandTotal });
     }
 
-    // 2. DENSE RANKING (1, 1, 2 style - No skipping!)
-    let uniqueScores = [...new Set(scoresList.map(s => s.totalscore))].sort((a, b) => b - a);
-
-    // 3. Assign the Positions
-    scoresList.forEach((student) => {
-        let rank = uniqueScores.indexOf(student.totalscore) + 1;
-        rows[student.index].querySelector('.position').innerText = rank;
+    // Rank Position based on Total
+    scoresList.sort((a, b) => b.totalScore - a.totalScore);
+    scoresList.forEach((student, rank) => {
+        rows[student.index].querySelector('.position').innerText = rank + 1;
     });
-
-    // 4. Save data automatically
-    if (typeof autoSaveData === "function") {
-        autoSaveData();
-    }
 }
-Why this fixes Solex Gift Acade
+
+// Grading based on the 100-point Total
+function getGradeFromTotal(total) {
+    if (total >= 70) return "A";
     if (total >= 60) return "B";
     if (total >= 50) return "C";
     if (total >= 45) return "D";
