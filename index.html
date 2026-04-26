@@ -461,8 +461,11 @@ font-size:22px;
     </div>
 
     <div style="margin-bottom: 20px; text-align: center;" class="no-print">
-    <input type="text" id="subjectSearch" onkeyup="searchBySubject()" placeholder="🔍 Search Subject Name..." 
-    style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black;">
+    <input type="text" id="subjectSearch" 
+           onkeyup="searchBySubject();" 
+           onkeydown="if(event.keyCode==13){event.preventDefault(); return false;}"
+           placeholder="🔍 Search Subject Name..." 
+           style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black;">
 </div>
    
     <div style="overflow-x:auto;">
