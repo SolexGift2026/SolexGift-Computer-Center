@@ -460,6 +460,11 @@ font-size:22px;
         <button onclick="addRow()" style="background: #17a2b8; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">+ Add Student</button>
     </div>
 
+    <div style="margin-bottom: 20px; text-align: center;" class="no-print">
+    <input type="text" id="subjectSearch" onkeyup="searchBySubject()" placeholder="🔍 Search Subject Name..." 
+    style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black;">
+</div>
+   
     <div style="overflow-x:auto;">
         <table id="resultTable" style="width:100%; border-collapse: collapse; background: white; border: 1px solid #ddd;">
             <thead>
@@ -885,6 +890,21 @@ function getGradeFromTotal(total) {
     if (total >= 50) return "C";
     if (total >= 45) return "D";
     return "F";
+}
+    function searchBySubject() {
+    // Get what the user typed in the search box
+    let filter = document.getElementById('subjectSearch').value.toLowerCase();
+    // Get the actual subject title of the current sheet
+    let subjectTitle = document.getElementById('subjectHeader').value.toLowerCase();
+    // Get the whole result section
+    let section = document.getElementById('single-subject-compiler');
+
+    // If the subject matches or the search is empty, show the section
+    if (subjectTitle.includes(filter)) {
+        section.style.display = "";
+    } else {
+        section.style.display = "none";
+    }
 }
     
    // Add this at the bottom of your analyseResults function
