@@ -392,61 +392,49 @@ font-size:22px;
     body { background: white !important; }
     #single-subject-compiler { border: none !important; width: 100% !important; }
 }
-* --- GOLD & WHITE FORM SYSTEM --- */
+/* --- GOLD & GREEN MATURED FORM SYSTEM --- */
 #registration-section, #client-section {
-    background: linear-gradient(135deg, #ffffff 50%, #fff9db 100%); /* Gold/White Mix */
-    color: #333;
+    /* Blend: Gold on top-left to Green on bottom-right */
+    background: linear-gradient(135deg, #fdfbf0 30%, #d4af37 60%, #1b4332 100%); 
+    color: white; /* Changed to white for better contrast against green */
     padding: 40px 25px;
     border-radius: 20px;
-    border: 3px solid #d4af37; /* Metallic Gold */
+    border: 3px solid #d4af37;
     max-width: 850px;
     margin: 40px auto;
-    text-align: left;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
 
-.matured-form h2 {
-    color: #003366; /* Deep Blue */
-    text-align: center;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
+/* Ensure labels are readable against the dark green bottom */
 .matured-form label {
     font-weight: bold;
-    color: #003366;
+    color: #ffffff; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     display: block;
     margin-top: 15px;
 }
 
+.matured-form h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 10px;
+}
+
+/* Matured input styling */
 .matured-form input, 
 .matured-form select, 
 .matured-form textarea {
     width: 100%;
     padding: 12px;
     margin-top: 5px;
-    border: 1.5px solid #d4af37;
+    border: 2px solid #d4af37;
     border-radius: 8px;
-    background: #fdfdfd;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
     font-size: 16px;
-}
-
-.btn-submit-gold {
-    background-color: #003366;
-    color: white;
-    padding: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 25px;
-    transition: 0.3s;
-}
-
-.btn-submit-gold:hover {
-    background-color: #d4af37;
 }
 </style>
 </head>
@@ -678,14 +666,13 @@ font-size:22px;
 <div class="card">Affordable and professional work.</div>
 </div>
 </section>
-
 <hr>
 
     <section id="registration-section" class="matured-form">
     <h2>🎓 Student Registration</h2>
     <form action="https://formspree.io/f/xyklllkk" method="POST" enctype="multipart/form-data">
         <label>Full Name</label>
-        <input type="text" name="Student Name" required placeholder="Surname First...">
+        <input type="text" name="Student Name" required placeholder="Full Name">
 
         <div style="display: flex; gap: 15px;">
             <div style="flex: 1;">
@@ -693,23 +680,19 @@ font-size:22px;
                 <input type="date" name="DOB" required>
             </div>
             <div style="flex: 1;">
-                <label>Nationality</label>
-                <input type="text" name="Nationality" placeholder="e.g. Nigerian">
+                <label>Phone Number</label>
+                <input type="tel" name="Phone" required>
             </div>
         </div>
 
         <label>Course of Interest</label>
         <select name="Course">
             <option>Computer Training</option>
-            <option>Graphic Design</option>
             <option>Web Development</option>
             <option>Data Analysis</option>
         </select>
 
-        <label>Upload Passport/ID</label>
-        <input type="file" name="Document">
-
-        <button type="submit" class="btn-submit-gold">Register Student</button>
+        <button type="submit" class="btn-submit-gold" style="background: #d4af37; color: #1b4332; margin-top:20px;">Register Student</button>
     </form>
 </section>
 
