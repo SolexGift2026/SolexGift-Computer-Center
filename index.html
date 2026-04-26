@@ -392,59 +392,84 @@ font-size:22px;
     body { background: white !important; }
     #single-subject-compiler { border: none !important; width: 100% !important; }
 }
-/* Styling the Form Backgrounds */
-#registration-form, #client-form {
-    background: linear-gradient(135deg, #ffffff 30%, #ffcc00 100%); /* White to Gold mix */
-    padding: 30px;
-    border-radius: 15px;
+/* Container for the Registration Form */
+#registration-section {
+    background: linear-gradient(135deg, #ffffff 60%, #fff8e1 100%); /* Subtle white to light gold */
+    padding: 40px;
+    border-radius: 20px;
     border: 1px solid #d4af37; /* Metallic Gold border */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#registration-section h2 {
+    color: #003366; /* Deep Professional Blue */
+    text-align: center;
     margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Making the Form Boxes (Input Fields) look "Matured" */
-input[type="text"], 
-input[type="number"], 
-input[type="email"], 
-select {
+/* Grouping inputs for a cleaner look */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Professional Input Styling */
+.reg-input {
     width: 100%;
-    padding: 12px 15px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 8px; /* Slightly rounded for a modern feel */
-    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
     font-size: 16px;
-    transition: 0.3s;
-    background-color: #fafafa;
-}
-
-/* Adding a "Focus" shine when a student clicks a box */
-input:focus, select:focus {
-    border-color: #ffcc00; /* Gold border on click */
-    outline: none;
-    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
     background-color: #ffffff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-/* Professional Button for the Form */
-.form-submit-btn {
-    background-color: #003366; /* Deep Professional Blue */
-    color: white;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 8px;
+.reg-input:focus {
+    border-color: #d4af37; /* Gold focus */
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+    outline: none;
+}
+
+/* File Upload Styling */
+input[type="file"] {
+    background: #f9f9f9;
+    padding: 10px;
     cursor: pointer;
+}
+
+/* The Submit Button */
+.btn-register {
+    background-color: #003366;
+    color: white;
     width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
     font-size: 18px;
     font-weight: bold;
-    transition: background 0.3s;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 20px;
 }
 
-.form-submit-btn:hover {
-    background-color: #d4af37; /* Turns Gold on hover */
+.btn-register:hover {
+    background-color: #d4af37; /* Gold on hover */
+    transform: translateY(-2px);
 }
-
 </style>
 </head>
 
