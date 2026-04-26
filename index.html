@@ -384,7 +384,16 @@ font-size:35px;
 #typing{
 font-size:22px;
 }
+/* PASTE THE PRINT CODE HERE */
+@media print {
+    .no-print, button, header, nav, .ceo-voice-container {
+        display: none !important;
+    }
+    body { background: white !important; }
+    #single-subject-compiler { border: none !important; width: 100% !important; }
 }
+
+</style>  
 </style>
 </head>
 
@@ -460,9 +469,11 @@ font-size:22px;
         <button onclick="addRow()" style="background: #17a2b8; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">+ Add Student</button>
     </div>
 
-    <div style="margin-bottom: 20px; text-align: center;" class="no-print">
-    <input type="text" id="subjectSearch" onkeyup="searchBySubject()" placeholder="🔍 Search Subject Name..." 
-    style="padding: 12px; width: 300px; border: 2px solid #007bff; border-radius: 5px; font-weight: bold; color: black;">
+   <div style="margin-bottom: 20px; text-align: center;" class="no-print">
+    <button type="button" onclick="window.print(); return false;" 
+    style="background: #007bff; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px;">
+        🖨️ Print Result Sheet
+    </button>
 </div>
    
     <div style="overflow-x:auto;">
