@@ -392,8 +392,59 @@ font-size:22px;
     body { background: white !important; }
     #single-subject-compiler { border: none !important; width: 100% !important; }
 }
+/* Styling the Form Backgrounds */
+#registration-form, #client-form {
+    background: linear-gradient(135deg, #ffffff 30%, #ffcc00 100%); /* White to Gold mix */
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #d4af37; /* Metallic Gold border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin-bottom: 30px;
+}
 
-</style>  
+/* Making the Form Boxes (Input Fields) look "Matured" */
+input[type="text"], 
+input[type="number"], 
+input[type="email"], 
+select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Slightly rounded for a modern feel */
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: 0.3s;
+    background-color: #fafafa;
+}
+
+/* Adding a "Focus" shine when a student clicks a box */
+input:focus, select:focus {
+    border-color: #ffcc00; /* Gold border on click */
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+    background-color: #ffffff;
+}
+
+/* Professional Button for the Form */
+.form-submit-btn {
+    background-color: #003366; /* Deep Professional Blue */
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.form-submit-btn:hover {
+    background-color: #d4af37; /* Turns Gold on hover */
+}
+
 </style>
 </head>
 
