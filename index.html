@@ -944,6 +944,24 @@ window.onload = function() {
     }
 };
     typeEffect();
+function startTalking() {
+    const audio = document.getElementById('ceoAudio');
+    const container = document.querySelector('.ceo-voice-container');
+    
+    if (audio.paused) {
+        audio.play().catch(error => {
+            console.log("Audio failed to play. Make sure the file exists in the audio folder.");
+        });
+        container.classList.add('talking');
+        
+        audio.onended = () => {
+            container.classList.remove('talking');
+        };
+    } else {
+        audio.pause();
+        container.classList.remove('talking');
+    }
+}
 </script>
 
 </body>
