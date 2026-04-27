@@ -479,47 +479,48 @@ font-size:22px;
 }
    
 <style>
-    /* The outer container that hides the overflow */
+    /* 1. The Container */
     .marquee-wrapper { 
-        width: 100%; 
-        overflow: hidden; 
+        width: 100% !important; 
+        overflow: hidden !important; 
         background: #ffffff;
-        padding: 20px 0;
+        padding: 40px 0;
     }
 
-    /* The moving track */
+    /* 2. The Moving Track */
     .marquee-content { 
-        display: flex; 
-        gap: 50px; 
-        width: max-content; 
+        display: flex !important; 
+        gap: 60px !important; 
+        width: max-content !important; 
         animation: scrollRight 30s linear infinite; 
     }
 
-    /* The instructor card - keeps things contained on Laptop */
+    /* 3. The Card - Keeps them side-by-side on Laptop */
     .inst-card { 
-        text-align: center; 
-        width: 220px; /* This controls the size on Laptop */
-        flex-shrink: 0; 
+        text-align: center !important; 
+        width: 200px !important; 
+        flex-shrink: 0 !important; 
+        display: block !important;
     }
 
-    /* THE PHOTO FIX: This prevents it from filling the laptop screen */
+    /* 4. THE PHOTO FIX - Forces the circle shape on ALL devices */
     .inst-card img { 
-        width: 180px;  /* Fixed size for laptop */
-        height: 180px; /* Fixed size for laptop */
-        border-radius: 50%; 
-        border: 6px solid #d4af37; 
-        object-fit: cover; 
-        display: block;
-        margin: 0 auto; /* Centers the photo in the card */
+        width: 180px !important;  
+        height: 180px !important; 
+        max-width: 180px !important;
+        border-radius: 50% !important; 
+        border: 6px solid #d4af37 !important; 
+        object-fit: cover !important; 
+        display: block !important;
+        margin: 0 auto !important;
     }
 
-    .inst-card h3 { color: #00008B; margin: 15px 0 5px; font-size: 18px; white-space: normal; }
+    .inst-card h3 { color: #00008B; margin: 15px 0 5px; font-size: 18px; white-space: normal !important; }
     .inst-card p { color: #1b4332; font-weight: bold; font-size: 14px; margin: 0; }
 
-    /* Smooth movement from left to right */
     @keyframes scrollRight { 
-        0% { transform: translateX(-50%); } 
-        100% { transform: translateX(0); } 
+        0% { transform: translateX(-100%); } 
+        100% { transform: translateX(100vw); } 
     }
 </style>
 </head>
@@ -685,15 +686,6 @@ font-size:22px;
             </div>
         </div>
     </div>
-      <div class="marquee-wrapper">
-    <div class="marquee-content">
-        <div class="inst-card">
-            <img src="image/instructor1.png">
-            <h3>Name</h3>
-            <p>Title</p>
-        </div>
-        </div>
-</div>
 </section>
   <p style="margin-top: 15px; font-family: sans-serif; color: #555;">
     From professional printing to custom web design & Video editing. 
