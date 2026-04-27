@@ -596,82 +596,663 @@ font-size:22px;
     </div>
 </section>
 
-  <section style="text-align: center; padding: 40px 20px; background-color: #f9f9f9;">
-  <h2 style="color: #003366; font-family: sans-serif;">Watch Our Latest Work</h2>
-  
-  <section style="padding: 50px 20px; background: linear-gradient(135deg, #cfb53b 0%, #e6e6e6 50%, #d4af37 100%); font-family: 'Segoe UI', Arial, sans-serif;">
-  
-  <div style="max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 25px; border: 5px solid #b8860b; box-shadow: 0 20px 40px rgba(0,0,0,0.4); overflow: hidden; position: relative;">
+
+Conversation with Gemini
+do i need to delete anything before pasting the java script
+
+Yes, you should delete your old slider or script code to prevent "code conflicts"—where the computer gets confused because two different scripts are trying to do the same thing at once.
+
+Specifically, look for these two areas in your file:
+
+1. The HTML Section (Around Line 350-450)
+Find the area where your current "Top Instructor" or "Slider" is located.
+
+Delete: Everything from the opening <section> tag to the closing </section> tag of that old slider.
+
+Why: If you leave the old one, you will have two sliders on the page, and the "speaking machine" might try to read names for a photo that isn't even visible.
+
+2. The JavaScript Section (At the very bottom)
+Scroll to the very bottom of your code, just before the </body> tag.
+
+Delete: Any old <script> blocks that were related to your previous slider (functions like nextSlide(), showDivs(), or autoSlide()).
+
+Why: Old timers (like setInterval) from your previous code will keep running in the background. This can cause the voice to skip names or the images to flicker back and forth.
+
+🛠️ How to Paste Cleanly
+To ensure it works on your laptop perfectly, follow this "clean" sequence:
+
+1
+Clear the old HTML
+The visual part
+Remove the old slider section. Paste the new <section id="instructor-slideshow" class="matured-form"> block in its place.
+
+2
+Clear the old Script
+The brain part
+Look at the very bottom of your file. If you see an old <script> tag that controls images, delete it entirely.
+
+3
+Paste the new Script
+Right before </body
+">
+Paste the new JavaScript I gave you. Make sure the instructors list contains the exact names of your photo files (e.g., instructor1.jpg).
+
+
+Expert Tip: If you paste the new code and the screen is blank, right-click on your laptop screen and select "Inspect", then click "Console." If you see red text saying File Not Found, it means the photo names in your code don't match the names of the files in your folder.
+
+Want me to show you how to check if your photo names match the code exactly?
+
+this was the code i use for the scrip <script>// 1. DATA: Add your 10 instructors hereconst instructors = [
+
+{ name: "Professor Success", photo: "instructor1.jpg" },
+
+{ name: "Engineer Gift Solomon", photo: "instructor2.jpg" },
+
+{ name: "Dr. Sarah Adams", photo: "instructor3.jpg" },
+
+{ name: "Mr. Michael Brown", photo: "instructor4.jpg" },
+
+{ name: "Chef Elena Rodriguez", photo: "instructor5.jpg" },
+
+{ name: "Captain David Okafor", photo: "instructor6.jpg" },
+
+{ name: "Nurse Maryam Bello", photo: "instructor7.jpg" },
+
+{ name: "Architect Paul Vance", photo: "instructor8.jpg" },
+
+{ name: "Barrister Jane Doe", photo: "instructor9.jpg" },
+
+{ name: "Specialist Peter Kwame", photo: "instructor10.jpg" }
+
+];let currentIndex = 0;let slideInterval;const startBtn = document.getElementById('start-tour-btn');const slideContainer = document.getElementById('slide-container');const imgElement = document.getElementById('instructor-img');const nameElement = document.getElementById('instructor-name-label');// 2. THE VOICE FUNCTIONfunction announceInstructor(name) {
+
+// Cancel any existing speech
+
+window.speechSynthesis.cancel();
+
+
+const speech = new SpeechSynthesisUtterance();
+
+speech.text = `Our instructor, ${name}`;
+
+speech.pitch = 1.0;
+
+speech.rate = 0.85; // Matured, steady speed
+
+window.speechSynthesis.speak(speech);
+
+}// 3. THE SLIDE CHANGERfunction nextInstructor() {
+
+const person = instructors[currentIndex];
+
+
+// Update visuals
+
+imgElement.src = person.photo;
+
+nameElement.innerText = person.name;
+
+
+// Trigger Voice
+
+announceInstructor(person.name);
+
+
+// Move to next (looping)
+
+currentIndex = (currentIndex + 1) % instructors.length;
+
+}// 4. THE TRIGGER
+
+startBtn.addEventListener('click', () => {
+
+startBtn.style.display = 'none'; // Hide button after click
+
+slideContainer.style.display = 'block'; // Show the slides
+
+
+nextInstructor(); // Start immediately
+
+slideInterval = setInterval(nextInstructor, 5000); // Change every 5 seconds
+
+});
+
+</script>how should i save the image to fit your code
+
+To make your code work perfectly, the most important thing is that the names of the image files match the names inside your instructors list exactly.
+
+Here is the best way to save and organize your photos so the "speaking machine" can find them.
+
+1. The Naming Convention
+Your code looks for specific filenames like instructor1.jpg. When you save your photos from your phone or camera to your laptop, rename them exactly like this:
+
+Instructor 1: instructor1.jpg
+
+Instructor 2: instructor2.jpg
+
+...up to: instructor10.jpg
+
+Warning: Be careful with file extensions. If your photo is a .png but your code says .jpg, the image will not show up. Ensure they are all .jpg to match your current script.
+
+2. The Folder Structure
+On your laptop, you must keep the photos in the same folder as your HTML file. If the images are in a different folder, the code won't be able to "grab" them.
+
+1
+Locate your Website Folder
+On your laptop
+Open the folder where you saved your index.html (your website file).
+
+2
+Move the Photos
+Paste them in
+Copy your 10 renamed photos (instructor1.jpg, etc.) and paste them directly into that same folder.
+
+3
+Check for 'Double Extensions'
+Common error
+Make sure you didn't accidentally name a file instructor1.jpg.jpg. If you see "File Type: JPG" in the folder settings, just name the file instructor1.
+
+
+3. Quick Troubleshooting Table
+If the machine speaks but the photo is blank, check this table:
+
+If you see...	The reason is...	The fix is...
+A white box	Wrong file name	Check that the code says instructor1.jpg and your file is named exactly the same.
+A broken image icon	Wrong folder	Move the photo into the same folder as your .html file.
+Speaking but no photo	Case sensitivity	On some laptops, Instructor1.JPG is different from instructor1.jpg. Use all lowercase.
+Pro Tip: Resizing for Quality
+Since you want a "matured" look, try to crop your photos into a Square shape before saving them. Because your CSS uses border-radius: 50%, a square photo will become a perfect circle. If the photo is a wide rectangle, it might look stretched or like an oval.
+
+Want me to show you how to change the code if your photos are .png instead of .jpg?
+
+which folder should i trop the in github
+
+To make your code work on GitHub Pages (or any web host), you should drop your images into the same folder where your index.html file is located.
+
+On GitHub, this usually means the root directory (the main folder of your repository).
+
+📂 The GitHub File Structure
+Your repository should look like this in your browser:
+
+index.html (Your main website file)
+
+style.css (If you have a separate CSS file)
+
+instructor1.jpg
+
+instructor2.jpg
+
+...
+
+instructor10.jpg
+
+Note: If you put the images inside a folder named "images," you must change your code from photo: "instructor1.jpg" to photo: "images/instructor1.jpg". Keeping them in the main folder is the easiest way to ensure the code "sees" them immediately.
+
+🛠️ How to Upload on GitHub
+1
+Open your Repository
+Go to github.com
+Navigate to the main page of your project repository.
+
+2
+Add Files
+The upload button
+Click the Add file button near the top right, then select Upload files.
+
+3
+Drag and Drop
+Upload all 10
+Drag all 10 instructor.jpg files from your laptop into the upload box. Wait for the progress bars to finish.
+
+4
+Commit Changes
+Save to the web
+Scroll down, type a message like "Added instructor photos," and click Commit changes.
+
+
+⚠️ Two Common Mistakes on GitHub
+Case Sensitivity: GitHub is very strict. If your file is named Instructor1.JPG (capital letters) but your code says instructor1.jpg (lowercase), it will work on your laptop but fail on GitHub. Make sure they match exactly.
+
+Wait for the Build: After you click "Commit," GitHub Pages takes about 1 to 2 minutes to update. If you refresh the site immediately and don't see the photos, wait 60 seconds and try again.
+
+Want me to show you how to check if the images are loading correctly using the browser Console?
+
+change the code because i want to save them to image
+
+To save your images correctly so they work with your JavaScript, you need to organize them on your laptop and ensure the code matches your file format. Since most high-quality photos are saved as .jpg, we will stick with that.
+
+1. Organizing Your Files
+GitHub and your web browser are very strict about names. If you save an image as Instructor1.JPG but the code says instructor1.jpg, it will stay a white box.
+
+Follow these 3 rules on your laptop:
+
+Lowercase Everything: Name your files instructor1.jpg, instructor2.jpg, etc. Do not use capital letters.
+
+Match the Extension: Ensure they are all .jpg. If your computer says they are .png, you must change the code (I'll show you how below).
+
+The Root Folder: Put all 10 images in the same folder where your index.html is. Do not put them in a sub-folder like "images" yet, as that requires a more complex "path" in the code.
+
+2. Updated "Universal" Script
+I have updated the script below to be more robust. It handles the "speaking machine" and the image swapping.
+
+Where to paste: Go to the very bottom of your file, delete your old script, and paste this one right above the </body> tag.
+
+JavaScript
+<script>
+// 1. DATA: THE LIST
+// If your images are .png, change '.jpg' to '.png' below for every person
+const instructors = [
+    { name: "Professor Success", photo: "instructor1.jpg" },
+    { name: "Engineer Gift Solomon", photo: "instructor2.jpg" },
+    { name: "Dr. Sarah Adams", photo: "instructor3.jpg" },
+    { name: "Mr. Michael Brown", photo: "instructor4.jpg" },
+    { name: "Chef Elena Rodriguez", photo: "instructor5.jpg" },
+    { name: "Captain David Okafor", photo: "instructor6.jpg" },
+    { name: "Nurse Maryam Bello", photo: "instructor7.jpg" },
+    { name: "Architect Paul Vance", photo: "instructor8.jpg" },
+    { name: "Barrister Jane Doe", photo: "instructor9.jpg" },
+    { name: "Specialist Peter Kwame", photo: "instructor10.jpg" }
+];
+
+let currentIndex = 0;
+const startBtn = document.getElementById('start-tour-btn');
+const slideContainer = document.getElementById('slide-container');
+const imgElement = document.getElementById('instructor-img');
+const nameElement = document.getElementById('instructor-name-label');
+
+function announceInstructor(name) {
+    window.speechSynthesis.cancel(); // Clears any stuck speech
+    const speech = new SpeechSynthesisUtterance(`Our instructor, ${name}`);
+    speech.rate = 0.85; 
+    window.speechSynthesis.speak(speech);
+}
+
+function nextInstructor() {
+    const person = instructors[currentIndex];
     
-    <h2 style="color: #003366; text-align: center; text-transform: uppercase; letter-spacing: 1px; font-size: 22px;">💻 Computer Electronics Lecture 💻</h2>
+    // Check if the image exists and update
+    imgElement.src = person.photo;
+    nameElement.innerText = person.name;
+    
+    announceInstructor(person.name);
+    currentIndex = (currentIndex + 1) % instructors.length;
+}
 
-    <div id="slider" style="width: 100%; height: 450px; position: relative; margin-top: 20px; background: #000; border-radius: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-      
-      <div class="mySlides animate" style="text-align: center; color: white; padding: 40px;">
-        <h1 style="color: #cfb53b; font-size: 40px;">Internal Components</h1>
-        <p style="font-size: 20px;">Exploring the "Brain" of the Computer</p>
-        <div style="font-size: 80px;">🧠💻</div>
-      </div>
+startBtn.addEventListener('click', () => {
+    // Hide the start zone and show the slide
+    document.getElementById('unlock-zone').style.display = 'none';
+    slideContainer.style.display = 'block';
+    
+    nextInstructor();
+    setInterval(nextInstructor, 6000); // Change every 6 seconds
+});
+</script>
+3. How to Upload to GitHub
+When you are ready to put this on the web:
 
-      <div class="mySlides animate" style="display:none; text-align: center; color: white; padding: 40px;">
-        <h2 style="color: #cfb53b;">The CPU (Processor)</h2>
-        <p>The Central Processing Unit executes all instructions.</p>
-        <img src="https://img.icons8.com/fluency/240/cpu.png" style="width: 150px; margin-top: 20px;">
-      </div>
+Open your GitHub repository.
 
-      <div class="mySlides animate" style="display:none; text-align: center; color: white; padding: 40px;">
-        <h2 style="color: #c0c0c0;">Random Access Memory (RAM)</h2>
-        <p>Short-term memory used for multitasking and speed.</p>
-        <img src="https://img.icons8.com/fluency/240/memory-slot.png" style="width: 150px; margin-top: 20px;">
-      </div>
+Click Add file -> Upload files.
 
-      <div class="mySlides animate" style="display:none; text-align: center; color: white; padding: 40px;">
-        <h2 style="color: #cfb53b;">Storage: SSD vs HDD</h2>
-        <p>Where your data, files, and OS are saved permanently.</p>
-        <img src="https://img.icons8.com/fluency/240/ssd.png" style="width: 150px; margin-top: 20px;">
-      </div>
+Drag your index.html AND all 10 instructor.jpg files into the box together.
 
-      <button onclick="plusSlides(-1)" style="position: absolute; left: 10px; background: rgba(207, 181, 59, 0.7); border: none; color: white; font-size: 30px; cursor: pointer; border-radius: 50%; width: 50px; height: 50px;">❮</button>
-      <button onclick="plusSlides(1)" style="position: absolute; right: 10px; background: rgba(207, 181, 59, 0.7); border: none; color: white; font-size: 30px; cursor: pointer; border-radius: 50%; width: 50px; height: 50px;">❯</button>
+Click Commit changes.
+
+Note: If you are testing this on your laptop and the images don't show up, check your File Explorer. If you see instructor1.jpg.jpg, rename it to just instructor1.jpg. Computers often hide the extension, causing you to type it twice by mistake!
+
+Want me to show you how to add a 'Back' and 'Next' button so users can manualy change slides?
+
+now i can pu the photo on image right
+
+Yes, you are exactly right. Now that you have the folder structure and the code ready, you can place your photos into that image folder.
+
+Since you mentioned using an image folder, we need to make one tiny "address change" in your code so the "machine" knows to look inside that specific folder instead of just looking in the main area.
+
+1. The Final Code Adjustment
+In your JavaScript, you just need to add image/ before each filename. This tells the browser: "Go into the 'image' folder, then find the photo."
+
+Update your instructors list to look like this:
+
+JavaScript
+const instructors = [
+    { name: "Professor Success", photo: "image/instructor1.jpg" },
+    { name: "Engineer Gift Solomon", photo: "image/instructor2.jpg" },
+    { name: "Dr. Sarah Adams", photo: "image/instructor3.jpg" },
+    { name: "Mr. Michael Brown", photo: "image/instructor4.jpg" },
+    { name: "Chef Elena Rodriguez", photo: "image/instructor5.jpg" },
+    { name: "Captain David Okafor", photo: "image/instructor6.jpg" },
+    { name: "Nurse Maryam Bello", photo: "image/instructor7.jpg" },
+    { name: "Architect Paul Vance", photo: "image/instructor8.jpg" },
+    { name: "Barrister Jane Doe", photo: "image/instructor9.jpg" },
+    { name: "Specialist Peter Kwame", photo: "image/instructor10.jpg" }
+];
+2. Setting it up on GitHub
+When you go to GitHub to upload, follow these steps to keep it organized:
+
+1
+Create the folder
+In your GitHub Repository
+Click Add file > Create new file. Type image/ (with the slash) and then a temporary name like placeholder.txt. Save it. GitHub will now show an image folder.
+
+2
+Upload the photos
+Into the image folder
+Click into your new image folder. Then click Add file > Upload files. Drag all 10 of your renamed instructor.jpg files here.
+
+3
+Commit and Save
+Wait 60 seconds
+Click Commit changes. GitHub will take a minute to process the new folder and photos.
+
+
+3. Important Checklist
+Folder Name: Make sure the folder is named exactly image (lowercase). If you name it Images or Photos, the code won't find it.
+
+File Names: Ensure your photos are named instructor1.jpg, instructor2.jpg, etc., all in lowercase.
+
+The "Speak" Test: Once you click the Start Tour button on your laptop, the machine should now show the first photo from the folder and say the name.
+
+Why we use a folder: Keeping your photos in an image folder is the "professional" way to do it. It keeps your main index.html area clean and organized as your website grows!
+
+Would you like me to show you how to add a 'Loading' icon that shows while the photos are being fetched from GitHub?
+
+I have add two image it have to show most I completely add the ten image before it can show?
+
+No, you do not have to wait until you add all ten images for the code to start working. It will work even if you only have one or two images uploaded.
+
+However, because the code is designed to loop through ten people, it will try to find instructor3.jpg after it finishes with the first two. If that file isn't there yet, the "machine" will still speak the name, but the screen will show a broken image icon or a blank space for that specific turn.
+
+Here is how to handle it while you are still uploading:
+Option 1: The Quick Fix (Temporary)
+If you only have two images ready right now, just change the number in the "Instructors" list in your code. Only keep the two that actually exist in your image folder.
+
+JavaScript
+// Change this temporarily so it only looks for the 2 photos you have
+const instructors = [
+    { name: "Professor Success", photo: "image/instructor1.jpg" },
+    { name: "Engineer Gift Solomon", photo: "image/instructor2.jpg" }
+];
+Option 2: Use a "Placeholder"
+You can copy your first photo and rename the copies to instructor3.jpg, instructor4.jpg, etc., until you get the real photos of the other instructors. This prevents the website from looking "broken" to your visitors.
+
+⚠️ Important GitHub Reminder
+When you upload images to the image folder on GitHub, they don't always appear instantly.
+
+Commit the files: Make sure you clicked the green Commit changes button.
+
+The 2-Minute Rule: GitHub Pages takes about 60 to 120 seconds to "build" your site. Even if you see the files in the folder, the website might not show them for a minute or two.
+
+Hard Refresh: If you are on your laptop, press Ctrl + F5 (or Cmd + Shift + R on Mac). This forces the browser to look for the new photos you just uploaded instead of using the old "empty" version it saved in its memory.
+
+How to check if the 2 images are working:
+Click your Start Presentation button.
+
+If the first two photos show up and the voice speaks, your folder path (image/instructor1.jpg) is correct.
+
+Once you add the 3rd, 4th, and 5th photos later today, just add their names back into that const instructors list in your code!
+
+my add student for result compilation is not working again
+
+When a form that previously worked suddenly stops, it usually comes down to one of three things: a broken link in the code, a missing folder on GitHub, or a naming conflict in your script.
+
+Since you've been moving files into an image folder and updating your script, let's troubleshoot the "Add Student" section specifically.
+
+1. Check your Form Action (The Link)
+Look at the <form> tag for your Student Registration. If you are using Formspree, ensure the ID (the random letters at the end) hasn't been deleted or changed accidentally.
+
+It should look like this:
+
+HTML
+<form action="https://formspree.io/f/your_unique_id" method="POST">
+Fix: If the action is empty or says "", the "Submit" button will do nothing.
+
+2. The "Missing ID" Conflict
+Because we added a lot of new JavaScript for the Speaking Instructor Slides, it’s possible a script error is "freezing" the rest of the page.
+
+If the browser hits an error (like looking for a button that isn't there), it stops running all other scripts, including your form logic.
+
+How to check on your laptop:
+
+Open your website in Chrome or Edge.
+
+Press F12 (or right-click and choose Inspect).
+
+Click the Console tab at the top.
+
+If you see Red Text: It will tell you exactly which line is broken. Usually, it's a "Null" error because a button ID was renamed.
+
+3. Verify your Button Type
+Check the button at the bottom of your "Add Student" form. It must be a type="submit". If it was changed to just <button>, some browsers won't send the data.
+
+Correct Code:
+
+HTML
+<button type="submit" class="btn-big-rounded">REGISTER STUDENT NOW</button>
+4. Resetting the Style Conflict
+In your last update, we used a lot of !important in the CSS. If your "Add Student" form is hidden or the boxes are unclickable, it might be because the Instructor Slide CSS is overlapping it.
+
+Quick Test:
+Move your "Student Registration" section above the "Instructor Slideshow" section in your HTML. If it starts working again, we know the Instructor script was interfering with the form.
+
+If it still isn't working:
+Please paste the Registration Form part of your code here. I will check if any of the new "Matured" styles or Instructor scripts accidentally disabled your submission boxes.
+
+Would you like me to provide a 'Clean' version of the Registration Form that is guaranteed to work with your new design?
+
+button type is missing where should i paste it
+
+Since you already have the button in your code, you just need to add the type="submit" attribute inside the opening <button> tag. This tells the browser that this button is responsible for sending the form data to GitHub or Formspree.
+
+1. Where to update the code
+Look for the line that starts with <button in your Student Registration section.
+
+Change it from this:
+
+HTML
+<button class="btn-big-rounded">REGISTER STUDENT NOW</button>
+To this exactly:
+
+HTML
+<button type="submit" class="btn-big-rounded">REGISTER STUDENT NOW</button>
+2. Why this matters on Laptops
+While some mobile phones "guess" that a button inside a form is for submitting, laptops (System browsers) are more strict. If the type="submit" is missing, the laptop might treat the button as a "dead" element that does nothing when clicked.
+
+3. The "Matured" Registration Form
+If you want to ensure the whole section is working perfectly with your new design, here is the complete, corrected block for that specific form.
+
+HTML
+<section class="matured-form">
+    <h2>🎓 Student Registration</h2>
+    <form action="https://formspree.io/f/your_form_id" method="POST">
+        
+        <label>Full Name</label>
+        <input type="text" name="Student_Name" placeholder="Enter Full Name..." required>
+
+        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <label>Date of Birth</label>
+                <input type="date" name="DOB" required>
+            </div>
+            <div style="flex: 1;">
+                <label>Nationality</label>
+                <input type="text" name="Nationality" placeholder="Country">
+            </div>
+        </div>
+
+        <label>Course of Interest</label>
+        <select name="Course" required>
+            <option value="" disabled selected>CHOOSE A COURSE</option>
+            <option>Computer Engineering</option>
+            <option>Advanced Graphics</option>
+            <option>Web Development</option>
+            <option>Data Analysis</option>
+        </select>
+
+        <button type="submit" class="btn-big-rounded">REGISTER STUDENT NOW</button>
+        
+    </form>
+</section>
+Important Check before you Save:
+The ID: Make sure you replace your_form_id in the action link with your actual Formspree ID.
+
+The Location: Ensure this block is not inside your "Instructor Slideshow" tags. They should be separate sections so the JavaScript doesn't interfere with the form.
+
+Want me to check if your 'Client Registration' form also needs this button fix?
+
+in the result analysis the add student button stop working
+
+If the "Add Student" button stopped working specifically in your Result Analysis or compilation section, it is almost certainly because the new Instructor Slideshow JavaScript is "crashing" the page before the browser can reach your result code.
+
+When one part of a script has an error, the browser stops running everything that follows. Since we added new IDs for the slideshow, your old result buttons might be getting ignored.
+
+🛠️ The "Result Fix" Checklist
+1. Check for "ID Clashes"
+If you copied the matured-form class or specific IDs (like start-tour-btn) into both the Instructor section and the Result section, the browser will get confused.
+
+The Fix: Ensure your Result Form button has a unique ID, like id="add-student-btn".
+
+2. Verify the type="submit"
+As we discussed earlier, if you are using a <form> for result compilation, the button must have the type="submit" attribute, or it won't trigger the data processing.
+
+Check this line in your Result Section:
+
+HTML
+<button type="submit" id="add-student-result" class="btn-big-rounded">
+    ADD STUDENT FOR COMPILATION
+</button>
+3. Debugging the "Laptop Crash"
+Since it works on your phone but not your laptop, there is likely a JavaScript Console Error. Here is how to find the exact line causing the "freeze":
+
+1
+Open the Inspect Tool
+On your laptop
+Open your website in Chrome or Edge. Right-click anywhere and select Inspect.
+
+2
+Check the 'Console' Tab
+Look for red text
+Click the Console tab at the top of the side window. If you see a red error saying Cannot read properties of null (reading 'addEventListener'), it means the Instructor Script is looking for a button that doesn't exist in your Result section.
+
+3
+Fix the Script Logic
+Add a Safety Check
+To prevent the Instructor Script from breaking your Result Form, you must wrap the code in an if statement.
+
+
+💻 The Safety-Wrapper Fix
+Replace the top part of your Instructor Script (at the bottom of your file) with this. This "if" check prevents the script from crashing if it doesn't see the Instructor buttons:
+
+JavaScript
+<script>
+// Only run the instructor code if the buttons actually exist on this page
+const startBtn = document.getElementById('start-tour-btn');
+
+if (startBtn) {
+    const instructors = [ /* your list here */ ];
+    
+    startBtn.addEventListener('click', () => {
+        // ... rest of your instructor code ...
+    });
+}
+
+// YOUR RESULT COMPILATION CODE SHOULD GO BELOW THIS
+function addStudentToResult() {
+    // Your logic for adding students
+}
+</script>
+Why this happens: On a laptop, the browser is much faster and stricter. If your script tries to find start-tour-btn but you are currently looking at the Result Compilation page where that button doesn't exist, the script "dies" instantly and refuses to run your addStudent function.
+
+Want me to give you a complete, safe script that handles both the Instructor Slide and the Result Compilation without crashing?
+
+This is the result analysis section I don't know why he student stop adding
+
+Looking at your photo, I’ve spotted exactly why the "Add Student" button stopped working.
+
+Your button is currently looking for a function called addRow() (you can see it in your code as onclick="addRow()"), but that function is likely being blocked or crashed by the new Instructor Slide code we added earlier.
+
+Because JavaScript runs in order, if the Instructor script has an error, the addRow() function will never run.
+
+1. The Immediate Fix (The "Safety Check")
+You need to make sure your Instructor code doesn't "kill" the rest of the page. Go to the very bottom of your code where the <script> for the instructors is, and replace the startBtn part with this:
+
+JavaScript
+// WRAP YOUR INSTRUCTOR CODE LIKE THIS TO PREVENT ERRORS
+const startBtn = document.getElementById('start-tour-btn');
+
+if (startBtn) {
+    startBtn.addEventListener('click', () => {
+        // ... all your instructor logic goes inside here ...
+        startBtn.style.display = 'none';
+        slideContainer.style.display = 'block';
+        nextInstructor();
+        setInterval(nextInstructor, 5000);
+    });
+}
+2. Check the addRow() Function
+In your HTML (from the photo), you have:
+<button onclick="addRow()">
+
+Make sure that somewhere in your file, you still have the script that defines what addRow actually does. It should look like this:
+
+JavaScript
+function addRow() {
+    const table = document.getElementById("resultsTable"); // Check if this ID matches your table
+    const row = table.insertRow(-1);
+    
+    // Your logic to add cells (Name, Score, etc.)
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    
+    cell1.innerHTML = '<input type="text" placeholder="Student Name">';
+    cell2.innerHTML = '<input type="number" placeholder="Score">';
+}
+3. Common Problem: The "Missing ID"
+In the photo, your input has id="subjectHeader". If your addRow() function is trying to find a different ID (like id="studentName"), the button will click, but nothing will happen because the "machine" can't find the data.
+
+How to verify on your laptop:
+
+Open the page in your browser.
+
+Press F12 and go to the Console.
+
+Click the "Add" button.
+
+If it says "addRow is not defined", then your script was deleted.
+
+If it says "Cannot read property of null", then an ID in your HTML doesn't match your script.
+
+Summary of the Fix:
+Don't let the Instructor Script crash the page: Add the if (startBtn) check I showed you in step 1.
+
+Verify addRow exists: Scroll to the bottom and make sure the function addRow() is still there and not accidentally deleted when you pasted the instructor code.
+
+noe fecht me the code for instructor section
+
+To keep your website organized and ensure the "speaking machine" works perfectly, I have consolidated the code into two clean blocks.
+
+This version includes the "image/" folder path we discussed and a safety check to make sure the script doesn't break your "Add Student" button.
+
+1. The HTML (The Structure)
+Paste this exactly where you want the slide to appear. It uses your "matured" green and gold colors.
+
+HTML
+<section id="instructor-slideshow" class="matured-form" style="text-align: center; min-height: 550px;">
+    <h2 style="margin-bottom: 20px;">Meet Our Expert Instructors</h2>
+    
+    <div id="unlock-zone">
+        <p style="color: #00008B; font-weight: bold; margin-bottom: 15px;">Click to start the guided tour with voice</p>
+        <button id="start-tour-btn" class="btn-big-rounded" style="width: auto; padding: 20px 50px;">
+            START PRESENTATION
+        </button>
     </div>
 
-    <p style="text-align: center; margin-top: 15px; font-weight: bold; color: #003366;">Click the arrows to change slides | SolexGift Academy</p>
-  </div>
-
-  <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-
-    function showSlides(n) {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slides[slideIndex-1].style.display = "block";  
-    }
-  </script>
-
-  <style>
-    .animate {
-      animation: fadeEffect 1.5s;
-    }
-    @keyframes fadeEffect {
-      from {opacity: 0.4;} 
-      to {opacity: 1;}
-    }
-  </style>
-</section>
-  <p style="margin-top: 15px; font-family: sans-serif; color: #555;">
-    From professional printing to custom web design & Video editing. 
-  </p>
-    
+    <div id="slide-container" style="display: none;">
+        <div style="position: relative; display: inline-block;">
+            <img id="instructor-img" src="image/instructor1.jpg" 
+                 style="width: 320px; height: 320px; border-radius: 50%; border: 8px solid #1b4332; object-fit: cover; box-shadow: 0 15px 35px rgba(0,0,0,0.4);">
+        </div>
+        <h2 id="instructor-name-label" style="margin-top: 30px; font-size: 32px; color: #00008B;">PREPARING...</h2>
+    </div>
 </section>
 <section>
 <h2>Why Choose Us</h2>
@@ -1014,6 +1595,58 @@ function startTalking() {
         container.classList.remove('talking');
     }
 }
+    <script>
+    // DATA: THE LIST
+// Use only ONE instructors array. Remove the duplicate one at the bottom.
+
+const instructors = [
+    { name: "Tech Master David Solomon", photo: "image/instructor1.png" },
+    { name: "Code Expert Jame Mohammad", photo: "image/instructor2.png" },
+    { name: "Web Engineer Sarah Adams", photo: "image/instructor3.png" },
+    { name: "Data Pro Michael Brown", photo: "image/instructor4.png" },
+    { name: "Chef Elena Rodriguez", photo: "image/instructor5.png" },
+    { name: "Captain David Okafor", photo: "image/instructor6.png" },
+    { name: "Nurse Maryam Bello", photo: "image/instructor7.png" },
+    { name: "Architect Paul Vance", photo: "image/instructor8.png" },
+    { name: "Barrister Jane Doe", photo: "image/instructor9.png" },
+    { name: "Specialist Peter Kwame", photo: "image/instructor10.png" }
+];
+
+let currentIndex = 0;
+
+const startBtn = document.getElementById('start-tour-btn');
+const slideContainer = document.getElementById('slide-container');
+const imgElement = document.getElementById('instructor-img');
+const nameElement = document.getElementById('instructor-name-label');
+
+function announceInstructor(name) {
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(`Our instructor, ${name}`);
+    speech.rate = 0.85;
+
+    window.speechSynthesis.speak(speech);
+}
+
+function nextInstructor() {
+    const person = instructors[currentIndex];
+
+    imgElement.src = person.photo;
+    nameElement.innerText = person.name;
+
+    announceInstructor(person.name);
+
+    currentIndex = (currentIndex + 1) % instructors.length;
+}
+
+startBtn.addEventListener('click', () => {
+    document.getElementById('unlock-zone').style.display = 'none';
+    slideContainer.style.display = 'block';
+
+    nextInstructor();
+    setInterval(nextInstructor, 6000);
+});
+</script>
 </script>
 
 </body>
