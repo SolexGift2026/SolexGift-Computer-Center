@@ -681,7 +681,6 @@ font-size:22px;
             <option>Web Development</option>
         </select>
 
-        <label>Upload Passport</label>
         <input type="file" name="Passport">
 
         <button type="submit" class="btn-big-rounded">REGISTER NOW</button>
@@ -962,59 +961,7 @@ function startTalking() {
     }
 }
     <script>
-// 1. DATA: THE LIST
-// If your images are .png, change '.jpg' to '.png' below for every person
-const instructors = [
-    { name: "Tech Master David solomon", photo: "image/instructor1.png" },
-    { name: "Code Epert jame Mohammad", photo: "image/instructor2.png" },
-    { name: "web Engineer David Solomon. Sarah Adams", photo: "image/instructor3.png" },
-    { name: "Data Pro Ehigocho Gift Aboje. Michael Brown", photo: "image/instructor4.png" },
-    { name: "Chef Elena Rodriguez", photo: "image/instructor5.png" },
-    { name: "Captain David Okafor", photo: "image/instructor6.png" },
-    { name: "Nurse Maryam Bello", photo: "image/instructor7.png" },
-    { name: "Architect Paul Vance", photo: "image/instructor8.png" },
-    { name: "Barrister Jane Doe", photo: "image/instructor9.png" },
-    { name: "Specialist Peter Kwame", photo: "image/instructor10.png" }
-];
 
-let currentIndex = 0;
-const startBtn = document.getElementById('start-tour-btn');
-const slideContainer = document.getElementById('slide-container');
-const imgElement = document.getElementById('instructor-img');
-const nameElement = document.getElementById('instructor-name-label');
-
-function announceInstructor(name) {
-    window.speechSynthesis.cancel(); // Clears any stuck speech
-    const speech = new SpeechSynthesisUtterance(`Our instructor, ${name}`);
-    speech.rate = 0.85; 
-    window.speechSynthesis.speak(speech);
-}
-
-function nextInstructor() {
-    const person = instructors[currentIndex];
-    
-    // Check if the image exists and update
-    imgElement.src = person.photo;
-    nameElement.innerText = person.name;
-    
-    announceInstructor(person.name);
-    currentIndex = (currentIndex + 1) % instructors.length;
-}
-
-startBtn.addEventListener('click', () => {
-    // Hide the start zone and show the slide
-    document.getElementById('unlock-zone').style.display = 'none';
-    slideContainer.style.display = 'block';
-    
-    nextInstructor();
-    setInterval(nextInstructor, 6000); // Change every 6 seconds
-});
-// Change this temporarily so it only looks for the 2 photos you have
-    const instructors = [
-    { name: "Professor Success", photo: "image/instructor1.jpg" },
-    { name: "Engineer Gift Solomon", photo: "image/instructor2.jpg" }
-];
-</script>
 </script>
 </body>
 </html>
