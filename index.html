@@ -479,109 +479,94 @@ font-size:22px;
 }
    
 <style>
-/* =========================================
-   FULLY RESPONSIVE SCROLLING TEAM SECTION
-   Works on Phone, Tablet, Laptop, Desktop
-========================================= */
+/* ================================
+   CLEAN WORKING SCROLL SECTION
+   FIXED ANIMATION + PROPER SHAPE
+================================= */
 
-/* Outer wrapper */
 .scrolling-wrapper{
     width:100%;
     overflow:hidden;
     position:relative;
-    padding:clamp(15px, 3vw, 30px) 0;
+    padding:20px 0;
 }
 
-/* Moving row */
+/* Track */
 .scrolling-content{
     display:flex;
-    align-items:center;
-    gap:clamp(20px, 4vw, 50px);
+    gap:30px;
     width:max-content;
-    animation:move-left-to-right 25s linear infinite;
+    animation:scrollLoop 25s linear infinite;
 }
 
-/* Each card */
+/* Card shape container */
 .instructor-circle-card{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    flex:0 0 auto;
+    width:170px;
+    background:#fff;
+    border-radius:15px;
+    padding:15px 10px;
     text-align:center;
-    flex-shrink:0;
-    width:clamp(160px, 22vw, 230px);
-    padding:10px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
 }
 
-/* Responsive circular image */
+/* Image inside perfect circle frame */
 .instructor-circle-card img{
-    width:clamp(110px, 18vw, 180px);
-    height:clamp(110px, 18vw, 180px);
+    width:120px;
+    height:120px;
     border-radius:50%;
-    border:clamp(3px, 0.5vw, 6px) solid #d4af37;
     object-fit:cover;
-    box-shadow:0 10px 20px rgba(0,0,0,0.15);
-    margin-bottom:clamp(8px, 2vw, 15px);
+    border:4px solid #d4af37;
+    display:block;
+    margin:0 auto 10px;
 }
 
 /* Name */
 .instructor-circle-card h3{
+    font-size:16px;
     margin:0;
-    line-height:1.3;
     color:#00008B;
-    font-size:clamp(15px, 2vw, 22px);
-    font-weight:700;
 }
 
 /* Title */
 .instructor-circle-card p{
+    font-size:13px;
     margin-top:5px;
-    line-height:1.3;
     color:#1b4332;
     font-weight:bold;
-    font-size:clamp(12px, 1.6vw, 16px);
 }
 
-/* Smooth animation */
-@keyframes move-left-to-right{
-    from{
-        transform:translateX(-100vw);
+/* Proper infinite movement */
+@keyframes scrollLoop{
+    0%{
+        transform:translateX(0);
     }
-    to{
-        transform:translateX(100vw);
+    100%{
+        transform:translateX(-50%);
     }
 }
 
-/* Pause on hover (Laptop/Desktop) */
+/* Pause on hover (desktop only) */
 .scrolling-wrapper:hover .scrolling-content{
     animation-play-state:paused;
 }
 
-/* Very small phones */
-@media (max-width:480px){
+/* PHONE ADJUSTMENT */
+@media (max-width:768px){
 
-    .scrolling-content{
-        animation-duration:18s;
+    .instructor-circle-card{
+        width:140px;
     }
 
-}
-
-/* Tablets */
-@media (min-width:768px){
-
-    .scrolling-content{
-        animation-duration:24s;
+    .instructor-circle-card img{
+        width:100px;
+        height:100px;
     }
 
-}
-
-/* Large desktop */
-@media (min-width:1200px){
-
     .scrolling-content{
-        animation-duration:28s;
+        gap:20px;
+        animation-duration:20s;
     }
-
 }
 </style>
 </head>
