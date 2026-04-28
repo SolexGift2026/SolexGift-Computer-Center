@@ -479,104 +479,48 @@ font-size:22px;
 }
    
 <style>
-/* ================================
-   SCROLLING TEAM SECTION (FIXED)
-   Works smoothly on Laptop + Phone
-================================= */
-
-.scrolling-wrapper{
-    width:100%;
-    overflow:hidden;
-    position:relative;
-    padding:20px 0;
-}
-
-/* Moving track */
-.scrolling-content{
-    display:flex;
-    gap:30px;
-    width:max-content;
-    animation:scrollLoop 25s linear infinite;
-}
-
-/* IMPORTANT: cards must be duplicated in HTML for perfect loop */
-
-/* Card container (gives proper shape) */
-.instructor-circle-card{
-    flex:0 0 auto;
-    width:170px;
-    background:#ffffff;
-    border-radius:15px;
-    padding:15px 10px;
-    text-align:center;
-    box-shadow:0 6px 15px rgba(0,0,0,0.15);
-}
-
-/* Profile image (perfect circle) */
-.instructor-circle-card img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    object-fit:cover;
-    border:4px solid #d4af37;
-    margin-bottom:10px;
-}
-
-/* Name */
-.instructor-circle-card h3{
-    margin:0;
-    font-size:16px;
-    color:#00008B;
-}
-
-/* Role */
-.instructor-circle-card p{
-    margin-top:5px;
-    font-size:13px;
-    color:#1b4332;
-    font-weight:bold;
-}
-
-/* Smooth infinite animation */
-@keyframes scrollLoop{
-    0%{
-        transform:translateX(0);
-    }
-    100%{
-        transform:translateX(-50%);
-    }
-}
-
-/* Pause on hover (laptop only) */
-.scrolling-wrapper:hover .scrolling-content{
-    animation-play-state:paused;
-}
-
-/* PHONE RESPONSIVE */
-@media (max-width:768px){
-
-    .scrolling-content{
-        gap:20px;
-        animation-duration:20s;
+    /* The outer container that hides the overflow */
+    .marquee-wrapper { 
+        width: 100%; 
+        overflow: hidden; 
+        background: #ffffff;
+        padding: 20px 0;
     }
 
-    .instructor-circle-card{
-        width:140px;
+    /* The moving track */
+    .marquee-content { 
+        display: flex; 
+        gap: 50px; 
+        width: max-content; 
+        animation: scrollRight 30s linear infinite; 
     }
 
-    .instructor-circle-card img{
-        width:100px;
-        height:100px;
+    /* The instructor card - keeps things contained on Laptop */
+    .inst-card { 
+        text-align: center; 
+        width: 220px; /* This controls the size on Laptop */
+        flex-shrink: 0; 
     }
 
-    .instructor-circle-card h3{
-        font-size:14px;
+    /* THE PHOTO FIX: This prevents it from filling the laptop screen */
+    .inst-card img { 
+        width: 180px;  /* Fixed size for laptop */
+        height: 180px; /* Fixed size for laptop */
+        border-radius: 50%; 
+        border: 6px solid #d4af37; 
+        object-fit: cover; 
+        display: block;
+        margin: 0 auto; /* Centers the photo in the card */
     }
 
-    .instructor-circle-card p{
-        font-size:12px;
+    .inst-card h3 { color: #00008B; margin: 15px 0 5px; font-size: 18px; white-space: normal; }
+    .inst-card p { color: #1b4332; font-weight: bold; font-size: 14px; margin: 0; }
+
+    /* Smooth movement from left to right */
+    @keyframes scrollRight { 
+        0% { transform: translateX(-50%); } 
+        100% { transform: translateX(0); } 
     }
-}
 </style>
 </head>
 
@@ -699,84 +643,48 @@ font-size:22px;
   <section style="text-align: center; padding: 40px 20px; background-color: #f9f9f9;">
   <h2 style="color: #003366; font-family: sans-serif;">Watch Our Latest Work</h2>
   
-  
-<section style="padding: 50px 0; background: #fff; border-top: 3px solid #d4af37;">
+  <section class="matured-form" style="overflow: hidden; background: #fff; padding: 50px 0; border-top: 3px solid #d4af37;">
+    <h2 style="text-align: center; color: #1b4332; margin-bottom: 40px;">Meet Our Expert Team</h2>
     
-    <h2 style="text-align:center; color:#1b4332; margin-bottom:40px;">
-        Meet Our Expert Team
-    </h2>
-
     <div class="scrolling-wrapper">
-        
         <div class="scrolling-content">
-
-            <!-- ================= FIRST SET ================= -->
-
             <div class="instructor-circle-card">
                 <img src="image/instructor1.png" alt="Instructor 1">
-                <h3>Mr. David Solomon</h3>
-                <p>Founder / Lead Developer</p>
+                <div class="info">
+                    <h3>Mr. David Solomon</h3>
+                    <p>Founder/Lead Developer</p>
+                </div>
             </div>
-
             <div class="instructor-circle-card">
                 <img src="image/instructor2.png" alt="Instructor 2">
-                <h3>Educator David Yakubu</h3>
-                <p>Academic Dean</p>
+                <div class="info">
+                    <h3>Educator David David Yakubu</h3>
+                    <p>Academic Dean</p>
+                </div>
             </div>
-
             <div class="instructor-circle-card">
                 <img src="image/instructor3.png" alt="Instructor 3">
-                <h3>Miss Gift Shaibu</h3>
-                <p>Digital Queen</p>
+                <div class="info">
+                    <h3>Miss. Gift Ehigocho Shaibu</h3>
+                    <p>Digital Queen</p>
+                </div>
             </div>
-
             <div class="instructor-circle-card">
                 <img src="image/instructor4.png" alt="Instructor 4">
-                <h3>Mr. Imewa Success</h3>
-                <p>Head of Graphics</p>
+                <div class="info">
+                    <h3>Mr. Imewa Success</h3>
+                    <p>Head of Graphics</p>
+                </div>
             </div>
-
             <div class="instructor-circle-card">
                 <img src="image/instructor5.png" alt="Instructor 5">
-                <h3>Mr. Johnson Yakubu</h3>
-                <p>QA Tester</p>
+                <div class="info">
+                    <h3>Mr. Johnson Yakubu</h3>
+                    <p> QA Tster (Quality Assurance Tester)</p>
+                </div>
             </div>
-
-            <!-- ================= DUPLICATE SET (IMPORTANT FOR LOOP) ================= -->
-
-            <div class="instructor-circle-card">
-                <img src="image/instructor1.png" alt="Instructor 1">
-                <h3>Mr. David Solomon</h3>
-                <p>Founder / Lead Developer</p>
-            </div>
-
-            <div class="instructor-circle-card">
-                <img src="image/instructor2.png" alt="Instructor 2">
-                <h3>Educator David Yakubu</h3>
-                <p>Academic Dean</p>
-            </div>
-
-            <div class="instructor-circle-card">
-                <img src="image/instructor3.png" alt="Instructor 3">
-                <h3>Miss Gift Shaibu</h3>
-                <p>Digital Queen</p>
-            </div>
-
-            <div class="instructor-circle-card">
-                <img src="image/instructor4.png" alt="Instructor 4">
-                <h3>Mr. Imewa Success</h3>
-                <p>Head of Graphics</p>
-            </div>
-
-            <div class="instructor-circle-card">
-                <img src="image/instructor5.png" alt="Instructor 5">
-                <h3>Mr. Johnson Yakubu</h3>
-                <p>QA Tester</p>
-            </div>
-
         </div>
     </div>
-
 </section>
   <p style="margin-top: 15px; font-family: sans-serif; color: #555;">
     From professional printing to custom web design & Video editing. 
