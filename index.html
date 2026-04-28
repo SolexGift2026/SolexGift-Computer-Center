@@ -477,50 +477,64 @@ font-size:22px;
     background-color: #1b4332;
     transform: scale(1.02);
 }
-   
-<style>
-    /* The outer container that hides the overflow */
-    .marquee-wrapper { 
-        width: 100%; 
-        overflow: hidden; 
-        background: #ffffff;
-        padding: 20px 0;
-    }
+    <style>
+/* Container that clips the movement so it doesn't spill off screen */
+.scrolling-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
 
-    /* The moving track */
-    .marquee-content { 
-        display: flex; 
-        gap: 50px; 
-        width: max-content; 
-        animation: scrollRight 30s linear infinite; 
-    }
+/* The actual moving part */
+.scrolling-content {
+    display: flex;
+    gap: 60px; /* Space between each instructor */
+    width: max-content;
+    animation: move-left-to-right 25s linear infinite;
+}
 
-    /* The instructor card - keeps things contained on Laptop */
-    .inst-card { 
-        text-align: center; 
-        width: 220px; /* This controls the size on Laptop */
-        flex-shrink: 0; 
-    }
+/* The circular card design */
+.instructor-circle-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+}
 
-    /* THE PHOTO FIX: This prevents it from filling the laptop screen */
-    .inst-card img { 
-        width: 180px;  /* Fixed size for laptop */
-        height: 180px; /* Fixed size for laptop */
-        border-radius: 50%; 
-        border: 6px solid #d4af37; 
-        object-fit: cover; 
-        display: block;
-        margin: 0 auto; /* Centers the photo in the card */
-    }
+.instructor-circle-card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; /* Perfect Circle */
+    border: 6px solid #d4af37; /* Gold Border */
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+}
 
-    .inst-card h3 { color: #00008B; margin: 15px 0 5px; font-size: 18px; white-space: normal; }
-    .inst-card p { color: #1b4332; font-weight: bold; font-size: 14px; margin: 0; }
+.instructor-circle-card h3 {
+    font-size: 20px;
+    color: #00008B; /* Dark Blue for professional look */
+    margin: 0;
+}
 
-    /* Smooth movement from left to right */
-    @keyframes scrollRight { 
-        0% { transform: translateX(-50%); } 
-        100% { transform: translateX(0); } 
-    }
+.instructor-circle-card p {
+    font-size: 15px;
+    color: #1b4332; /* Forest Green for title */
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* The Animation Logic */
+@keyframes move-left-to-right {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+}
+
+/* Pause on Hover so users can read the names */
+.scrolling-wrapper:hover .scrolling-content {
+    animation-play-state: paused;
+}
+</style>
 </style>
 </head>
 
