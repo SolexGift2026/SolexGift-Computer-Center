@@ -480,8 +480,8 @@ font-size:22px;
    
 <style>
 /* ================================
-   CLEAN WORKING SCROLL SECTION
-   FIXED ANIMATION + PROPER SHAPE
+   SCROLLING TEAM SECTION (FIXED)
+   Works smoothly on Laptop + Phone
 ================================= */
 
 .scrolling-wrapper{
@@ -491,7 +491,7 @@ font-size:22px;
     padding:20px 0;
 }
 
-/* Track */
+/* Moving track */
 .scrolling-content{
     display:flex;
     gap:30px;
@@ -499,44 +499,45 @@ font-size:22px;
     animation:scrollLoop 25s linear infinite;
 }
 
-/* Card shape container */
+/* IMPORTANT: cards must be duplicated in HTML for perfect loop */
+
+/* Card container (gives proper shape) */
 .instructor-circle-card{
     flex:0 0 auto;
     width:170px;
-    background:#fff;
+    background:#ffffff;
     border-radius:15px;
     padding:15px 10px;
     text-align:center;
-    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    box-shadow:0 6px 15px rgba(0,0,0,0.15);
 }
 
-/* Image inside perfect circle frame */
+/* Profile image (perfect circle) */
 .instructor-circle-card img{
     width:120px;
     height:120px;
     border-radius:50%;
     object-fit:cover;
     border:4px solid #d4af37;
-    display:block;
-    margin:0 auto 10px;
+    margin-bottom:10px;
 }
 
 /* Name */
 .instructor-circle-card h3{
-    font-size:16px;
     margin:0;
+    font-size:16px;
     color:#00008B;
 }
 
-/* Title */
+/* Role */
 .instructor-circle-card p{
-    font-size:13px;
     margin-top:5px;
+    font-size:13px;
     color:#1b4332;
     font-weight:bold;
 }
 
-/* Proper infinite movement */
+/* Smooth infinite animation */
 @keyframes scrollLoop{
     0%{
         transform:translateX(0);
@@ -546,13 +547,18 @@ font-size:22px;
     }
 }
 
-/* Pause on hover (desktop only) */
+/* Pause on hover (laptop only) */
 .scrolling-wrapper:hover .scrolling-content{
     animation-play-state:paused;
 }
 
-/* PHONE ADJUSTMENT */
+/* PHONE RESPONSIVE */
 @media (max-width:768px){
+
+    .scrolling-content{
+        gap:20px;
+        animation-duration:20s;
+    }
 
     .instructor-circle-card{
         width:140px;
@@ -563,9 +569,12 @@ font-size:22px;
         height:100px;
     }
 
-    .scrolling-content{
-        gap:20px;
-        animation-duration:20s;
+    .instructor-circle-card h3{
+        font-size:14px;
+    }
+
+    .instructor-circle-card p{
+        font-size:12px;
     }
 }
 </style>
